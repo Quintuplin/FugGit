@@ -11,6 +11,9 @@ package fitbit;
  *      3) CALLS FILEIO TO OUTPUT FINISHED INFO TO DISPLAYREADY
  */
 public class ComplexData {
+    public static void main(String[] args){
+        System.out.println("HI");
+    }
   //testthing
   //updatething
 }
