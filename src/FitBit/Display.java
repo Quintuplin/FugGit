@@ -1,4 +1,4 @@
-package FitBit;
+package fitbit;
 
 /**
  * FileIO.java
@@ -14,4 +14,3 @@ package FitBit;
 public class Display {
     //TEST THIS SHIT;
 }
-

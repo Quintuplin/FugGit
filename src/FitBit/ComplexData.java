@@ -1,4 +1,4 @@
-package FitBit;
+package fitbit;
 
 /**
  * FileIO.java
@@ -11,4 +11,5 @@ package FitBit;
  *      3) CALLS FILEIO TO OUTPUT FINISHED INFO TO DISPLAYREADY
  */
 public class ComplexData {
+  //testthing
 }

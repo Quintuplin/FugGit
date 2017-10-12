@@ -1,4 +1,4 @@
-package FitBit;
+package fitbit;
 
 /**
  * FileIO.java
