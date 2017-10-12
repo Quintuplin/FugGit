@@ -16,4 +16,7 @@ import java.nio.file.Paths;
  *      3) DISPLAY READY DATASET
  */
 public class FileIO {
+  public static void main(String[] args) {
+    System.out.println("HI");
+  }
 }
