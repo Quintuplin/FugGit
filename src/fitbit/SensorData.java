@@ -1,5 +1,7 @@
 package fitbit;
 
+import static java.lang.Math.random;
+
 /**
  * SensorData.java
  * AUTHOR: TEAM HUNGRY
@@ -10,7 +12,18 @@ package fitbit;
  *      2) INTERPRETS DATA INTO CALCULATION-FRIENDLY FORMAT
  *              a) INTERPRETS ANALOG ACCELEROMETER DATA INTO INT STEPS
  *              b) INTERPRETS ANALOG HEARTRATE DATA INTO FLOAT BPS
- *      3) CALLS FILEIO TO OUTPUT FINISHED INFO TO RAW DATA
+ *      3) CALLS DATAIO TO OUTPUT FINISHED INFO TO RAW DATA
  */
-public class SensorData {
+class SensorData {
+    private static void getData(String[] args){
+        //for now, no simulated inputs - just simulated trash data
+        //sensorTime should be initialized to = System.nanoTime();
+        //from there on it should maintain itself
+        inputCheat();
+    }
+
+    private static void inputCheat(){
+        DataIO.addSteps(1);
+        DataIO.addBPS(60+20*random());
+    }
 }

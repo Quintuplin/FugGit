@@ -11,7 +11,15 @@ package fitbit;
  *      3) DISPLAY READY DATASET
  */
 public class DataIO {
-  public static void main(String[] args) {
-    System.out.println("HI");
-  }
+    public static void main(String[] args) {
+        System.out.println("HI");
+    }
+
+    private void AddSteps(int step){
+      System.out.println("STEP ADDED");
+    }
+
+    private void AddBPS(int step){
+        System.out.println("BEAT ADDED");
+    }
 }
