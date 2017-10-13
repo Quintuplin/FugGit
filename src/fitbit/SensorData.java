@@ -1,7 +1,7 @@
 package fitbit;
 
 /**
- * FileIO.java
+ * SensorData.java
  * AUTHOR: TEAM HUNGRY
  * CLASS: CSCI 360-01
  * PURPOSE: TO TRACK SENSORS AND INTERPRET/STORE DATA IN RAW DATASET
