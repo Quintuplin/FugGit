@@ -9,6 +9,8 @@ package fitbit;
  *      1) CALLS DATAIO TO INPUT INFO FROM RAW AND SETTINGS
  *      2) CALCULATES DATA TO GO TO DISPLAYREADY
  *      3) CALLS DATAIO TO OUTPUT FINISHED INFO TO DISPLAYREADY
+ *
+ *      RDD: CREATES DATA
  */
 public class ComplexData {
     public static void main(String[] args){

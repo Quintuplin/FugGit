@@ -9,6 +9,8 @@ package fitbit;
  *      1) RAW DATA DATASET
  *      2) SETTINGS DATASET
  *      3) DISPLAY READY DATASET
+ *
+ *      RDD: INFORMATION EXPERT
  */
 public class DataIO {
     public static void main(String[] args) {

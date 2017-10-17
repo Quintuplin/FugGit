@@ -13,9 +13,15 @@ import static java.lang.Math.random;
  *              a) INTERPRETS ANALOG ACCELEROMETER DATA INTO INT STEPS
  *              b) INTERPRETS ANALOG HEARTRATE DATA INTO FLOAT BPS
  *      3) CALLS DATAIO TO OUTPUT FINISHED INFO TO RAW DATA
+ *
+ *      RDD: CREATES DATA
  */
 class SensorData {
-    private static void getData(String[] args){
+    public static void main(String[] args) {
+
+    }
+
+    private static void getData(){
         //for now, no simulated inputs - just simulated trash data
         //sensorTime should be initialized to = System.nanoTime();
         //from there on it should maintain itself
