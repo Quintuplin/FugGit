@@ -29,7 +29,7 @@ class SensorData {
     }
 
     private static void inputCheat(){
-        DataIO.addSteps(1);
-        DataIO.addBPS(60+20*random());
+        DataExpert.addSteps(1);
+        DataExpert.addBPS(60+20*random());
     }
 }

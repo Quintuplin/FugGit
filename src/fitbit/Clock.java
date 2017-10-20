@@ -12,7 +12,11 @@ package fitbit;
  */
 
 public class Clock {
+<<<<<<< HEAD
     public static void main(String[] args) {
         System.out.println("HI");
     }
+=======
+
+>>>>>>> Complete Refactor of Classes to meet Object Design Criteria
 }
