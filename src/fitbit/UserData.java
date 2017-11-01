@@ -10,5 +10,20 @@ package fitbit;
  */
 
 public class UserData {
+    private int age;
+    private float weight;
+    private float height;
+
+    public void setAge(int age){
+        this.age = age;
+    }
+
+    public void setWeight(float weight){
+        this.weight = weight;
+    }
+
+    public void setHeight(float height){
+        this.height = height;
+    }
 
 }
