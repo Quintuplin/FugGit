@@ -13,4 +13,33 @@ package fitbit;
 
 public class HAC {
 
+    private int [] heartRate;
+    private int calories;
+    private float activity;
+
+    private void calculateHeartRate(...){
+
+        heartRate[0] = ...;
+    }
+
+    private void calculateCalories(int age, int height, int weight, ...){
+        calories = ...;
+    }
+
+    private void calculateActivity(...){
+        activity = ...;
+    }
+
+
+    public int [] getHeartRate(){
+       return heartRate;
+    }
+
+    public int getCalories() {
+        return calories;
+    }
+
+    public float getActivity() {
+        return activity;
+    }
 }
