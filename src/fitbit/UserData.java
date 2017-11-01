@@ -26,4 +26,15 @@ public class UserData {
         this.height = height;
     }
 
+    public int getAge(){
+        return age;
+    }
+
+    public float getWeight(){
+        return weight;
+    }
+
+    public float getHeight(){
+        return height;
+    }
 }
