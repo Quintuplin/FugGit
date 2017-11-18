@@ -4,7 +4,7 @@ package fitbit;
  * Clock.java
  * AUTHOR: TEAM HUNGRY
  * CLASS: CSCI 360-01
- * PURPOSE: STORES SETTINGS FOR DATE/TIME, ALARM, AND TIMER
+ * PURPOSE: Calculates date and time
  * OTHER:
  *      1) READS SETTINGS FROM CLOCKDATA
  *      2) INTERPRETS THAT PLUS INTERNAL TIMER TO CALCULATE CURRENT DATE, TIME, AND PROGRESS ON ALARMS, TIMERS
@@ -12,13 +12,9 @@ package fitbit;
  */
 
 public class Clock {
-    public static int getTime(){
-        int x = ClockData.getTimeData();
-        return (int)System.nanoTime() * x;
-    }
+    private long time = System.nanoTime();
 
-    public static void main(String[] args) {
-        update time;
-
+    public int time() {
+        return (int) ((System.nanoTime() - this.time) * DataExpert.getTimeData());
     }
 }

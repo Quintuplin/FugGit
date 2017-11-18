@@ -21,4 +21,8 @@ public class DataExpert {
         UserData.setAge(a);
         UserData.setSex(s);
     }
+
+    int getTimeData(){
+        return ClockData.getTimeData();
+    }
 }
