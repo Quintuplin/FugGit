@@ -11,6 +11,14 @@ package fitbit;
  *      3) SIMPLY STORES THESE SETTINGS TO BE USED BY CLOCK CLASS
  */
 
-public class ClockData {
+class ClockData {
+    private static int time = 0;
 
+    private static void setTime(int t){
+        time = t;
+    }
+
+    private static int getTime(){
+        return time;
+    }
 }
