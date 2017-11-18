@@ -12,11 +12,8 @@ package fitbit;
  */
 
 public class Clock {
-<<<<<<< HEAD
-    public static void main(String[] args) {
-        System.out.println("HI");
+    public static int getTime(){
+        int x = ClockData.getTime();
+        return (int)System.nanoTime() * x;
     }
-=======
-
->>>>>>> Complete Refactor of Classes to meet Object Design Criteria
 }

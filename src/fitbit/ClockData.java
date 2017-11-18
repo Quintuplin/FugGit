@@ -18,7 +18,7 @@ class ClockData {
         time = t;
     }
 
-    private static int getTime(){
+    static int getTime(){
         return time;
     }
 }
