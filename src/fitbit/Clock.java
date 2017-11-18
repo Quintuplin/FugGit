@@ -13,7 +13,12 @@ package fitbit;
 
 public class Clock {
     public static int getTime(){
-        int x = ClockData.getTime();
+        int x = ClockData.getTimeData();
         return (int)System.nanoTime() * x;
+    }
+
+    public static void main(String[] args) {
+        update time;
+
     }
 }

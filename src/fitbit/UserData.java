@@ -11,18 +11,19 @@ package fitbit;
 
 public class UserData {
     private int age;
-    private float weight;
-    private float height;
+    private int weight;
+    private int height;
+    private boolean sex;
 
     public void setAge(int age){
         this.age = age;
     }
 
-    public void setWeight(float weight){
+    public void setWeight(int weight){
         this.weight = weight;
     }
 
-    public void setHeight(float height){
+    public void setHeight(int height){
         this.height = height;
     }
 
