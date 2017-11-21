@@ -23,7 +23,8 @@ public class Test {
             System.out.println(Clock.time(ClockData.getTimeData()));
             Thread.sleep(1000);
             System.out.println(Clock.time(ClockData.getTimeData()));
-            Thread.sleep(1000);
+            System.out.println("please wait 1 minute for final test");
+            Thread.sleep(60000);
             System.out.println(Clock.time(ClockData.getTimeData()));
 
         } catch (java.lang.InterruptedException e) {
@@ -32,6 +33,7 @@ public class Test {
     }
 
     public static void main(String[] args) {
+        Controller.initialize();
         TestClock();
     }
 }

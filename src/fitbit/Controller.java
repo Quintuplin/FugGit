@@ -10,7 +10,10 @@ package fitbit;
  */
 
 public class Controller {
+    public static double init = 0;
+
     public static void initialize(){
+        init= System.nanoTime();
         //get userData
         //DataExpert.setUserData(UI.getUserData);
         //get clockData

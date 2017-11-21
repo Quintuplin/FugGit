@@ -12,13 +12,14 @@ package fitbit;
  */
 
 class Clock {
-    private static long init = System.nanoTime();
-    //init = # minutes today
     static int time(int minutes) {
-        if(System.nanoTime() - 1000 > init){
+        if(System.nanoTime() - 1000 > Controller.init){
             return minutes;
         }
-        else return ++minutes;
+        else{
+            minutes++;
+            return minutes;
+        }
     }
 
 }
