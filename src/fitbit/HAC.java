@@ -13,7 +13,7 @@ package fitbit;
 
 public class HAC {
 
-    private int [] heartRate;
+    private float [] heartRate;
     private int calories;
     private float activity;
 
@@ -22,7 +22,18 @@ public class HAC {
         heartRate[0] = ...;
     }
 
-    private void calculateCalories(int age, int height, int weight, ...){
+    //Male: ((-55.0969 + (0.6309 x HR) + (0.1988 x W) + (0.2017 x A))/4.184) x 60 x T
+    //Female: ((-20.4022 + (0.4472 x HR) - (0.1263 x W) + (0.074 x A))/4.184) x 60 x T
+
+
+    private void calculateCalories(int age, int weight, char sex, float, heartRate){
+        if (sex == 'm'){
+            calories = ((-55.0969 + (0.6309 * heartRate[]) + (0.1988 * weight) + (0.2017 * age))/4.184) * 60 * TIME;
+        }
+        else{
+            ((-20.4022 + (0.4472 * HR) - (0.1263 * W) + (0.074 * A))/4.184) * 60 * TIME;
+        }
+
         calories = ...;
     }
 
@@ -31,7 +42,7 @@ public class HAC {
     }
 
 
-    public int [] getHeartRate(){
+    public float [] getHeartRate(){
        return heartRate;
     }
 

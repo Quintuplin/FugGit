@@ -16,9 +16,6 @@ package fitbit;
 
 public class SettingsExpert {
 
-    private void setUserData(int age, float height, float weight){
-
-    }
 
     private void getUserData(){
 

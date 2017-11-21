@@ -32,6 +32,10 @@ public class DisplayUI {
         else if (menu == 1){
             //display menu 1;
         }
+        else if (menu ==2){
+            //display menu 2;
+        }
+        else if (menu == 3);
         //goes on for each menu
     }
 

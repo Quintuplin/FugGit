@@ -1,5 +1,7 @@
 package fitbit;
 
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+
 /**
  * DataExpert.java
  * AUTHOR: TEAM HUNGRY
@@ -15,11 +17,12 @@ package fitbit;
  */
 
 public class DataExpert {
-    void setUserData(int h, int w, int a, boolean s){
-        UserData.setHeight(h);
-        UserData.setWeight(w);
-        UserData.setAge(a);
-        UserData.setSex(s);
+
+
+
+    public void setUserDataD(int h, int w, int a, char s){
+
+        UserData.setUserData(h, w, a, s);
     }
 
     int getTimeData(){
