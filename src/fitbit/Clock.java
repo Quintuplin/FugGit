@@ -12,13 +12,20 @@ package fitbit;
  */
 
 class Clock {
+
+    private static float seconds;
+
+    public static void init(){
+        seconds = System.nanoTime();
+    }
+
     static int time(int minutes) {
-        if(System.nanoTime() - 1000 > Controller.init){
+        if(System.nanoTime() - 60000 <= seconds){
             return minutes;
         }
-        else{
-            minutes++;
-            return minutes;
+        else {
+            init();
+            return ++minutes;
         }
     }
 
