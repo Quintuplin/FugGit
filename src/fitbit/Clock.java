@@ -13,6 +13,10 @@ package fitbit;
 
 class Clock {
 
+    //ISSUES
+    //UNCHECKED USE OF STATIC
+    //MINUTES COUNTER IS ITERATING INCORRECTLY
+
     private static float seconds;
 
     public static void init(){
