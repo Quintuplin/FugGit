@@ -22,8 +22,8 @@ public class StepBPS {
         //for now, no simulated inputs - just simulated trash data
         //sensorTime should be initialized to = System.nanoTime();
         //from there on it should maintain itself
-        SetSteps(steapCheat());
-        SetBPS(BPSChear());
+        //SetSteps(steapCheat());
+        //SetBPS(BPSChear());
     }
 
     private static int stepCheat(){
@@ -31,6 +31,6 @@ public class StepBPS {
     }
 
     private static float BPSCheat(){
-        return float1.0;
+        return (float)1.1;
     }
 }

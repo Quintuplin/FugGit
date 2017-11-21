@@ -12,10 +12,11 @@ package fitbit;
  */
 
 public class Clock {
-    private long time = System.nanoTime();
+    static double init = .0001;
+    private static long time = System.nanoTime();
 
-    public int time() {
-        return (int) ((System.nanoTime() - this.time) * DataExpert.getTimeData());
-        System.out.println("github screwing up again");
+    public static int time() {
+        return (int) ((System.nanoTime() - time) * init);//DataExpert.getTimeData());
     }
+
 }

@@ -17,17 +17,17 @@ public class HAC {
     private int calories;
     private float activity;
 
-    private void calculateHeartRate(...){
+    private void calculateHeartRate(){
 
-        heartRate[0] = ...;
+        heartRate[0] = 1;
     }
 
-    private void calculateCalories(int age, int height, int weight, ...){
-        calories = ...;
+    private void calculateCalories(int age, int height, int weight, boolean sex){
+        calories = age;
     }
 
-    private void calculateActivity(...){
-        activity = ...;
+    private void calculateActivity(int num){
+        activity = num;
     }
 
 

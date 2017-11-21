@@ -16,10 +16,10 @@ package fitbit;
 
 public class DataExpert {
     void setUserData(int h, int w, int a, boolean s){
-        UserData.setHeight(h);
-        UserData.setWeight(w);
-        UserData.setAge(a);
-        UserData.setSex(s);
+//        UserData.setHeight(h);
+//        UserData.setWeight(w);
+//        UserData.setAge(a);
+//        UserData.setSex(s);
     }
 
     int getTimeData(){
