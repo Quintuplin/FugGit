@@ -16,5 +16,6 @@ public class Clock {
 
     public int time() {
         return (int) ((System.nanoTime() - this.time) * DataExpert.getTimeData());
+        System.out.println("github screwing up again");
     }
 }
