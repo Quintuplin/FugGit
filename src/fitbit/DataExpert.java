@@ -22,7 +22,7 @@ public class DataExpert {
 //        UserData.setSex(s);
     }
 
-    int getTimeData(){
+    double getTimeData(){
         return ClockData.getTimeData();
     }
 }

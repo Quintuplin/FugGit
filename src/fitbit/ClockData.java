@@ -12,10 +12,10 @@ package fitbit;
  */
 
 class ClockData {
-    private static int time = 0;
+    private static double time = 24.0;
     private static int date = 0;
 
-    private static void setTimeData(int t){
+    private static void setTimeData(double t){
         t %= 1439; //1440 minutes per day
         time = t;
     }
@@ -25,7 +25,7 @@ class ClockData {
         date = d;
     }
 
-    static int getTimeData(){
+    static double getTimeData(){
         return time;
     }
 

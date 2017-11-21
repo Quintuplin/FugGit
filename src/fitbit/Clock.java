@@ -11,11 +11,10 @@ package fitbit;
  *      3) RECORDS WHEN MIDNIGHT IS REACHED (NEW DAY), AND SENDS A RESET MARKER TO ALL DATA SETS
  */
 
-public class Clock {
-    static double init = .0001;
+class Clock {
     private static long time = System.nanoTime();
 
-    public static int time() {
+    static int time(double init) {
         return (int) ((System.nanoTime() - time) * init);//DataExpert.getTimeData());
     }
 
