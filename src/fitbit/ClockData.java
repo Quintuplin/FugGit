@@ -12,15 +12,15 @@ package fitbit;
  */
 
 class ClockData {
-    private static int time = 0;
+    private static int time = 24;
     private static int date = 0;
 
-    private static void setTimeData(int t){
+    static void setTimeData(int t){
         t %= 1439; //1440 minutes per day
         time = t;
     }
 
-    private static void setDateData(int d){
+    static void setDateData(int d){
         d %= 364; //365 days per year
         date = d;
     }

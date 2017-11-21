@@ -17,7 +17,7 @@ public class DisplayUI {
     static int menu = 0;
     static int menub = 0;
     public static void main(String[] args) {
-        initScreen(); //starts the simulation
+        //initScreen(); //starts the simulation
         while(true) {
             dataDisplay(); //displays the currently selected menu
             buttonListen(); //listens for button presses
@@ -41,12 +41,12 @@ public class DisplayUI {
 
     //listen for button press
     private static void buttonListen(){
-        if (){//button1press
+        if (true){//button1press
             menu= menu++%4;
             menub = 0;
         }
-        if (){//button2press
-            if(){//button2hold placeholder if statement
+        if (false){//button2press
+            if(false){//button2hold placeholder if statement
                 //enter edit mode
             }else{//button2tap
                 //alter secondary menu

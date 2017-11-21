@@ -11,11 +11,26 @@ package fitbit;
  *      3) RECORDS WHEN MIDNIGHT IS REACHED (NEW DAY), AND SENDS A RESET MARKER TO ALL DATA SETS
  */
 
-public class Clock {
-    private long time = System.nanoTime();
+class Clock {
 
-    public int time() {
-        return (int) ((System.nanoTime() - this.time) * DataExpert.getTimeData());
-        System.out.println("github screwing up again");
+    //ISSUES
+    //UNCHECKED USE OF STATIC
+    //MINUTES COUNTER IS ITERATING INCORRECTLY
+
+    private static float seconds;
+
+    public static void init(){
+        seconds = System.nanoTime();
     }
+
+    static int time(int minutes) {
+        if(System.nanoTime() - 60000 <= seconds){
+            return minutes;
+        }
+        else {
+            init();
+            return ++minutes;
+        }
+    }
+
 }

@@ -11,8 +11,9 @@ package fitbit;
 
 public class Controller {
     public static void initialize(){
+        Clock.init();
         //get userData
-        DataExpert.setUserData(UI.getUserData);
+        //DataExpert.setUserData(UI.getUserData);
         //get clockData
         //set initial nanotime
         //TEST start generating sensor data
