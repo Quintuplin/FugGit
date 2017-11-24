@@ -17,20 +17,23 @@ class Clock {
     //UNCHECKED USE OF STATIC
     //MINUTES COUNTER IS ITERATING INCORRECTLY
 
-    private static float seconds;
+    private static float newMinute;
 
     public static void init(){
-        seconds = System.nanoTime();
+        newMinute = System.nanoTime()/(float)1000000000.0;
     }
 
-    static int time(int minutes) {
-        if(System.nanoTime() - 60000 <= seconds){
-            return minutes;
+    static double time(float minutes) {
+        float seconds = System.nanoTime()/(float)1000000000.0 - newMinute;
+        if(seconds - 60 <= newMinute){
+            return minutes + seconds/100 ;
         }
         else {
             init();
-            return ++minutes;
+            return ++minutes + seconds/100;
         }
     }
 
+    //todo timer
+    //toto start/stop timer, get time elapsed
 }
