@@ -11,7 +11,9 @@ package fitbit;
 
 public class Controller {
     public static void initialize(){
+        UserData();
         Clock.init();
+        UserData.UserDatainit();
         //get userData
         //DataExpert.setUserData(UI.getUserData);
         //get clockData

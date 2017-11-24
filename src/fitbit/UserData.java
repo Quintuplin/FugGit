@@ -15,6 +15,10 @@ public class UserData {
     private int height;
     private char sex;
 
+    public void UserDatainit(){
+        UserData User = new UserData;
+    }
+
     private UserData(){
         age = 0;
         weight = 0;
