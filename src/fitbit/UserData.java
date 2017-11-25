@@ -15,15 +15,18 @@ public class UserData {
     private int height;
     private char sex;
 
-    public void UserDatainit(){
-        UserData User = new UserData;
-    }
 
     public UserData(){
         age = 0;
         weight = 0;
         height = 0;
         sex = 'n';
+    }
+    public UserData(int age, int weight, int height, char sex){
+        this.sex = sex;
+        this.weight= weight;
+        this.height = height;
+        this.age = age;
     }
 
     public boolean isEmpty(){
@@ -40,7 +43,6 @@ public class UserData {
         setWeight(w);
         setHeight(h);
         setSex(s);
-        return;
     }
 
     public void getUserData(){

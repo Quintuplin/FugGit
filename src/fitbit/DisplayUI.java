@@ -35,7 +35,7 @@ public class DisplayUI {
         if (menu ==0){
             int time = ClockData.getTimeData();
             int date = ClockData.getDateData();
-            int steps = StepBPSData.getSteps();
+            // int steps = StepBPSData.getSteps();
             //Call Java swing method that displays menu 1 taking in steps time and date as parameters
             //display menu 1; clock, heartrate, steps?
         }

@@ -12,9 +12,20 @@ package fitbit;
 
 public class StepBPSData {
     private int steps;
+    private  int bps;
 
     public StepBPSData(){
         steps = 0;
+        bps = 0;
+    }
+
+    private void setBpsData(){
+        bps = StepBPS.BPSCheat();
+    }
+
+    public int getBPS() {
+        setBpsData();
+        return bps;
     }
 
     public int getSteps() {

@@ -1,5 +1,9 @@
 package fitbit;
 
+import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 /**
  * Clock.java
  * AUTHOR: TEAM HUNGRY
@@ -11,20 +15,42 @@ package fitbit;
  *      3) RECORDS WHEN MIDNIGHT IS REACHED (NEW DAY), AND SENDS A RESET MARKER TO ALL DATA SETS
  */
 
+
+//Cant use Nanotime as a way of keeping track on a clock.
+
+
 class Clock {
+    private long timer;
+    private String time;
+    private String date;
 
     //ISSUES
     //UNCHECKED USE OF STATIC
     //MINUTES COUNTER IS ITERATING INCORRECTLY
 
+    public Clock(){
+        DateFormat df = new SimpleDateFormat("dd/MM/yy");
+        DateFormat tf = new SimpleDateFormat("HH:mm:ss");
+        Calendar calobj = Calendar.getInstance();
+        date = df.format((calobj.getTime()));
+        time = tf.format((calobj.getTime()));
+    }
+
+    public String currentTime(){
+        return time;
+    }
+    public String currentDate(){
+        return date;
+    }
+
     private static float newMinute;
 
     public static void init(){
-        newMinute = System.nanoTime()/(float)1000000000.0;
+        newMinute = System.nanoTime()/(long)1000000000.0;
     }
 
-    static double time(float minutes) {
-        float seconds = System.nanoTime()/(float)1000000000.0 - newMinute;
+    /*static double time(long minutes) {
+        float seconds = System.nanoTime()/(long)1000000000.0 - newMinute;
         if(seconds - 60 <= newMinute){
             return minutes + seconds/100 ;
         }
@@ -33,7 +59,15 @@ class Clock {
             return ++minutes + seconds/100;
         }
     }
+*/
 
-    //todo timer
-    //toto start/stop timer, get time elapsed
+
+    public void startTimer(){
+        timer = System.nanoTime();
+    }
+
+
+    public float endTimer(){
+        return (float) ((System.nanoTime()- timer) / 1000000000.0);
+    }
 }

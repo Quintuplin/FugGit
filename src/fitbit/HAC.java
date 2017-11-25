@@ -13,42 +13,53 @@ package fitbit;
 
 public class HAC {
 
-    private float heartRate;
-    private int calories;
+    private int heartRate;
+    private double caloriesBurned;
     private float activity;
 
-    /rivate void calculateHeartRate(...){
+    public HAC(){
+        heartRate = 0;
+        caloriesBurned = 0;
+        activity = 0;
+    }
+
+    /*
+    private void calculateHeartRate(...){
 
         heartRate[0] = ...;
     }
 
     //Male: ((-55.0969 + (0.6309 x HR) + (0.1988 x W) + (0.2017 x A))/4.184) x 60 x T
     //Female: ((-20.4022 + (0.4472 x HR) - (0.1263 x W) + (0.074 x A))/4.184) x 60 x T
+     [ (AGE_IN_YEAR x 0.2017) - (WEIGHT_IN_KILOGRAM x 0.09036)+ (HEART_BEAT_PER_MINUTE x 0.6309) - 55.0969] x DURATION_IN_MINUTE / 4.184
+    Calories Burned = [(Age x 0.074) — (Weight x 0.05741) + (Heart Rate x 0.4472) — 20.4022] x Time / 4.184.
 
 
-
-
-    public void calculateCalories(int age, int weight, char sex, float heartRate){
-        if (sex == 'm'){
-            calories = ((-55.0969 + (0.6309 * heartRate[]) + (0.1988 * weight) + (0.2017 * age))/4.184) * 60 * TIME;
-        }
-        else{
-            ((-20.4022 + (0.4472 * HR) - (0.1263 * W) + (0.074 * A))/4.184) * 60 * TIME;
-        }
-    }
-
-    private void calculateActivity(...){
-        activity = ...;
-    }
 
 */
+
+    public void calculateCalories(int age, double weight, char sex, int heartRate, double time){
+        if (sex == 'm'){
+            caloriesBurned = (((age * 0.2017)- (weight * 0.09036) + (heartRate* 0.6309) - 55.0969) * time) / 4.184;
+            //CANT FIND WHICH TO USE ((-55.0969 + (0.6309 * heartRate) + (0.1988 * weight) + (0.2017 * age))/4.184) * 60 * time;
+        }
+        else{
+            caloriesBurned = (((age * 0.074)- (weight * 0.05741) + (heartRate* 0.4472) - 20.4022) * time) / 4.184;
+        }
+    }
+
+/*    private void calculateActivity(...){
+        activity = ...;
+    }
+*/
+
 
     public float getHeartRate(){
        return heartRate;
     }
 
-    public int getCalories() {
-        return calories;
+    public double getCalories() {
+        return caloriesBurned;
     }
 
     public float getActivity() {

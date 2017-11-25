@@ -15,6 +15,11 @@ class ClockData {
     private static int time = 24;
     private static int date = 0;
 
+    public ClockData(){
+        time = 0;
+        date = 0;
+    }
+
     static void setTimeData(int t){
         t %= 1439; //1440 minutes per day
         time = t;

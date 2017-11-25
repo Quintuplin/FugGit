@@ -1,7 +1,5 @@
 package fitbit;
 
-import static java.lang.Math.random;
-
 /**
  * StepBPS.java
  * AUTHOR: TEAM HUNGRY
@@ -19,6 +17,7 @@ public class StepBPS {
     }
 
     private static void getData(){
+
         //for now, no simulated inputs - just simulated trash data
         //sensorTime should be initialized to = System.nanoTime();
         //from there on it should maintain itself
@@ -30,7 +29,7 @@ public class StepBPS {
         return 1;
     }
 
-    private static float BPSCheat(){
-        return (float)1.1;
+    public static int BPSCheat(){
+        return 148;
     }
 }
