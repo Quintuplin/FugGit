@@ -19,7 +19,7 @@ public class UserData {
         UserData User = new UserData;
     }
 
-    private UserData(){
+    public UserData(){
         age = 0;
         weight = 0;
         height = 0;

@@ -24,16 +24,26 @@ public class DisplayUI {
         }
 
     }
+
+    public void DisplayUI(){
+        menu = 0;
+        menub = 0;
+    }
+
     //output data to display
     private static void dataDisplay(){
         if (menu ==0){
+            int time = ClockData.getTimeData();
+            int date = ClockData.getDateData();
+            int steps = StepBPSData.getSteps();
+            //Call Java swing method that displays menu 1 taking in steps time and date as parameters
             //display menu 1; clock, heartrate, steps?
         }
         else if (menu == 1){
-            //display menu 1;
+            //display menu 2;
         }
         else if (menu ==2){
-            //display menu 2;
+            //display menu 3;
         }
         else if (menu == 3);
         //goes on for each menu
@@ -42,8 +52,9 @@ public class DisplayUI {
     //listen for button press
     private static void buttonListen(){
         if (true){//button1press
-            menu= menu++%4;
+            menu = menu++%4;
             menub = 0;
+            dataDisplay();
         }
         if (false){//button2press
             if(false){//button2hold placeholder if statement

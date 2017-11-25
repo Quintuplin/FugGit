@@ -17,7 +17,7 @@ public class HAC {
     private int calories;
     private float activity;
 
-    private void calculateHeartRate(...){
+    /rivate void calculateHeartRate(...){
 
         heartRate[0] = ...;
     }
@@ -26,7 +26,9 @@ public class HAC {
     //Female: ((-20.4022 + (0.4472 x HR) - (0.1263 x W) + (0.074 x A))/4.184) x 60 x T
 
 
-    private void calculateCalories(int age, int weight, char sex, float heartRate){
+
+
+    public void calculateCalories(int age, int weight, char sex, float heartRate){
         if (sex == 'm'){
             calories = ((-55.0969 + (0.6309 * heartRate[]) + (0.1988 * weight) + (0.2017 * age))/4.184) * 60 * TIME;
         }
@@ -39,8 +41,9 @@ public class HAC {
         activity = ...;
     }
 
+*/
 
-    public float [] getHeartRate(){
+    public float getHeartRate(){
        return heartRate;
     }
 

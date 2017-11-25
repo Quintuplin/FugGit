@@ -11,9 +11,21 @@ package fitbit;
 
 public class Controller {
     public static void initialize(){
-        UserData();
         Clock.init();
-        UserData.UserDatainit();
+        UserData User = new UserData();
+        DisplayUI display = new DisplayUI();
+
+        int age = ; //Get age from UI;
+        int weight = ; //Get weight from UI
+        int height = ; //Get Height from UI
+        char sex = ; //Get sex from UI
+
+        //Possibly put the listener into the parameters so we dont have to create extra vars
+        User.setUserData(age, weight, height, sex);
+
+        //Display Data
+        display.dataDisplay();
+
         //get userData
         //DataExpert.setUserData(UI.getUserData);
         //get clockData

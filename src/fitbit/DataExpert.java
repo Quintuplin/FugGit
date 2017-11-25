@@ -18,13 +18,6 @@ import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 
 public class DataExpert {
 
-
-
-    public void setUserDataD(int h, int w, int a, char s){
-
-        UserData.setUserData(h, w, a, s);
-    }
-
     int getTimeData(){
         return ClockData.getTimeData();
     }

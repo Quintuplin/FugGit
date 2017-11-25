@@ -11,4 +11,13 @@ package fitbit;
  */
 
 public class StepBPSData {
+    private int steps;
+
+    public StepBPSData(){
+        steps = 0;
+    }
+
+    public int getSteps() {
+        return steps;
+    }
 }
