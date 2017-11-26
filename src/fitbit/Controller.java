@@ -12,8 +12,6 @@ package fitbit;
 public class Controller {
     public void initialize(UserData user){
         Clock.init();
-        DisplayUI display = new DisplayUI();
-
         int age = 49; //Get age from UI PLACEHOLDER FOR NOW
         int weight = 155; //Get weight from UI
         int height = 61; //Get Height from UI
@@ -35,4 +33,6 @@ public class Controller {
         //initialize Data modules
         //run code
     }
+
+
 }

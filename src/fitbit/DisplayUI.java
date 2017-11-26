@@ -19,7 +19,7 @@ public class DisplayUI {
     public static void main(String[] args) {
         //initScreen(); //starts the simulation
         while(true) {
-            dataDisplay(); //displays the currently selected menu
+            //dataDisplay(); //displays the currently selected menu
             buttonListen(); //listens for button presses
         }
 
@@ -31,22 +31,35 @@ public class DisplayUI {
     }
 
     //output data to display
-    private static void dataDisplay(){
+    public void dataDisplay(Clock clock, StepBPSData steps, StepBPSData BPS, HACData HACD, UserData u1){
         if (menu ==0){
-            int time = ClockData.getTimeData();
-            int date = ClockData.getDateData();
-            // int steps = StepBPSData.getSteps();
+            String time = clock.currentTime();
+            String date = clock.currentDate();
+            System.out.println(time + "|" + date);
+
+            //int steps = StepBPSData.getSteps();
             //Call Java swing method that displays menu 1 taking in steps time and date as parameters
             //display menu 1; clock, heartrate, steps?
         }
         else if (menu == 1){
+            int step = steps.getSteps();
+            System.out.println("Steps: " + step);
+            int BPS1 = BPS.getBPS();
+            System.out.println("BPS: " + BPS1);
             //display menu 2;
         }
-        else if (menu ==2){
-            //display menu 3;
+        else if (menu == 2){
+            float time = 60;
+            double cal = HACD.getCaloriesBurned(u1,time);
+            System.out.println("Calories Burned: " + cal);
         }
         else if (menu == 3);
         //goes on for each menu
+    }
+
+    public void displayChange(){
+        menu = ++menu%4;
+        menub = 0;
     }
 
     //listen for button press
@@ -54,7 +67,6 @@ public class DisplayUI {
         if (true){//button1press
             menu = menu++%4;
             menub = 0;
-            dataDisplay();
         }
         if (false){//button2press
             if(false){//button2hold placeholder if statement

@@ -16,9 +16,14 @@ package fitbit;
 
 public class SettingsExpert {
 
-
-    private void getUserData(){
+    public SettingsExpert(){
 
     }
 
+
+
+    public void getUserData(){
+        Controller cont = new Controller();
+
+    }
 }

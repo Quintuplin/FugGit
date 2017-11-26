@@ -28,7 +28,12 @@ public class StepBPSData {
         return bps;
     }
 
+    private void setSteps(){
+        steps = StepBPS.stepCheat();
+    }
+
     public int getSteps() {
+        setSteps();
         return steps;
     }
 }

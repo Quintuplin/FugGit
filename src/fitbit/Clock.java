@@ -36,10 +36,20 @@ class Clock {
         time = tf.format((calobj.getTime()));
     }
 
+    private void update(){
+        DateFormat df = new SimpleDateFormat("dd/MM/yy");
+        DateFormat tf = new SimpleDateFormat("HH:mm:ss");
+        Calendar calobj = Calendar.getInstance();
+        date = df.format((calobj.getTime()));
+        time = tf.format((calobj.getTime()));
+    }
+
     public String currentTime(){
+        update();
         return time;
     }
     public String currentDate(){
+        update();
         return date;
     }
 

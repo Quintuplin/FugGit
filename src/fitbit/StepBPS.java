@@ -25,8 +25,8 @@ public class StepBPS {
         //SetBPS(BPSChear());
     }
 
-    private static int stepCheat(){
-        return 1;
+    public static int stepCheat(){
+        return 5;
     }
 
     public static int BPSCheat(){

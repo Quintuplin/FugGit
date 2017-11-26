@@ -18,6 +18,18 @@ import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 
 public class DataExpert {
 
+
+    public int getStepData(StepBPSData step) {
+        int steps = step.getSteps();
+        return steps;
+    }
+
+    public int getBPSData(){
+        StepBPSData BPS1 = new StepBPSData();
+        int BPS = BPS1.getBPS();
+        return BPS;
+    }
+
     int getTimeData(){
         return ClockData.getTimeData();
     }

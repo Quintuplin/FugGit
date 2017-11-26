@@ -45,9 +45,7 @@ public class UserData {
         setSex(s);
     }
 
-    public void getUserData(){
 
-    }
 
     public void setAge(int age){
         this.age = age;
