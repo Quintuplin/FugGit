@@ -32,55 +32,58 @@ public class DisplayUI {
 
     //output data to display
     //Controller Will most likely be passed in as well
-    public void dataDisplay(Clock clock, UserData u1, Controller Controller1){
+    public void dataDisplay(Clock clock, UserData u1, Controller Controller1, UI UI1) {
         DataExpert dataExpert1 = new DataExpert();
-        StepBPSData STPBPS1 =  new StepBPSData();
+        StepBPSData STPBPS1 = new StepBPSData();
         HACData HACData1 = new HACData();
 
-        if (menu == 0){
-            boolean onScreen = true;
-            while(onScreen == true) {
-                if(Controller1.buttonListen() == false) {
-                    String time = clock.currentTime();
-                    String date = clock.currentDate();
-                    System.out.println(time + "|" + date + "\n");
+        //Display UI
+        //UI1.button1();
+
+        int i = 2;
+        while (i < 2) {
+            if (menu == 0) {
+                boolean onScreen = true;
+                while (onScreen == true) {
+                    if (Controller1.buttonListen() == false) {
+                        String time = clock.currentTime();
+                        String date = clock.currentDate();
+                        System.out.println(time + "|" + date + "\n");
+                    } else {
+                        onScreen = false;
+                        displayChange();
+                    }
                 }
-                else{
-                    onScreen = false;
+                //Call Java swing method that displays menu 1 taking in steps time and date as parameters
+                //display menu 1: clock
+            } else if (menu == 1) {
+                boolean onScreen = true;
+                while (onScreen == true) {
+                    if (Controller1.buttonListen() == false) {
+                        int step1 = dataExpert1.getStepData(STPBPS1);
+                        int HR = dataExpert1.getHearRate(HACData1);
+                        System.out.println("Steps: " + step1);
+                        System.out.println("HeartRate: " + HR + "\n");
+                        //display Heart rate and steps
+                    } else {
+                        onScreen = false;
+                        displayChange();
+                    }
                 }
+            } else if (menu == 2) {
+                float time = 60; // TIME FOR CALORIES
+                double cal = dataExpert1.getCaloriesBurned(HACData1, u1, time, STPBPS1);
+                System.out.println("Calories Burned: " + cal + "\n");
+                //Displays Calories burned
+            } else if (menu == 3) {
+                System.out.println("Menu 3 (Activity Menu(NOT FINISHED)) \n");
+                //Will display Activity
             }
-            //Call Java swing method that displays menu 1 taking in steps time and date as parameters
-            //display menu 1: clock
-        }
-        else if (menu == 1){
-            boolean onScreen = true;
-            while (onScreen == true) {
-                if (Controller1.buttonListen() == false) {
-                    int step1 = dataExpert1.getStepData(STPBPS1);
-                    int HR = dataExpert1.getHearRate(HACData1);
-                    System.out.println("Steps: " + step1);
-                    System.out.println("HeartRate: " + HR + "\n");
-                    //display Heart rate and steps
-                }
-                else {
-                    onScreen = false;
-                }
-            }
-        }
-        else if (menu == 2){
-            float time = 5; // TIME FOR CALORIES
-            double cal = dataExpert1.getCaloriesBurned(HACData1, u1, time, STPBPS1);
-            System.out.println("Calories Burned: " + cal + "\n");
-            //Displays Calories burned
-        }
-        else if (menu == 3){
-            System.out.println("Menu 3 (Activity Menu(NOT FINISHED)) \n");
-            //Will display Activity
         }
     }
 
     //How display is changed
-    public void displayChange(){
+    private void displayChange(){
         menu = ++menu%4;
         menub = 0;
     }

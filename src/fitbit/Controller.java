@@ -13,9 +13,15 @@ package fitbit;
 public class Controller {
     static int sum;
 
-    public void initialize(UserData user){
+    public void initialize(){
         sum = 0;
-        Clock.init();
+
+        Clock clock1 = new Clock();
+        UserData user = new UserData();
+        DisplayUI display = new DisplayUI();
+        Controller controller1 = new Controller();
+        UI UI1 = new UI();
+
         int age = 49; //Get age from UI PLACEHOLDER FOR NOW
         int weight = 155; //Get weight from UI
         int height = 61; //Get Height from UI
@@ -24,8 +30,8 @@ public class Controller {
         //Possibly put the listener into the parameters so we dont have to create extra vars
         user.setUserData(age, weight, height, sex);
 
-        //Display Data
-        //display.dataDisplay();
+        UI1.displayMenu1();
+        display.dataDisplay(clock1, user, controller1, UI1);
 
         //get userData
         //DataExpert.setUserData(UI.getUserData);
@@ -41,7 +47,7 @@ public class Controller {
     //Controller button that listens for the Java swing button being pressed
     public boolean buttonListen(){
         boolean pressed = false;
-        if(sum == 10){
+        if(sum == 100){
             pressed = true;
         }
         if(pressed == true){

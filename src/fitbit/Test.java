@@ -10,15 +10,17 @@ import java.util.Optional;
 
 public class Test {
 
+    private static void TestUI(){
+
+    }
+
     private  static void TestHAC() {
         System.out.println("INITIALIZE HAC and User Data");
         DisplayUI display = new DisplayUI();
         Clock c1 = new Clock();
-        HAC hac = new HAC();
         StepBPSData BPS1 = new StepBPSData();
         Controller Cont1 = new Controller();
-        UserData U1 = new UserData();
-        Cont1.initialize(U1);
+        Cont1.initialize();
 
         //hac.calculateCalories(U1.getAge(), U1.getWeight(), U1.getSex(), BPS1.getBPS(), 60); //60 min is a placeholder as I cant wait an hour to see if it is done
 
@@ -30,15 +32,13 @@ public class Test {
     private static void TestDisplayData(){
         System.out.println("INITIALIZE Display Data");
         UserData u1 = new UserData();
-        StepBPSData BPS1 = new StepBPSData();
         DisplayUI display = new DisplayUI();
-        HACData HAC1 = new HACData();
 
         Controller Cont1 = new Controller();
-        Cont1.initialize(u1);
+        Cont1.initialize();
 
 
-        Clock c1 = new Clock();
+        /*Clock c1 = new Clock();
         display.dataDisplay(c1, u1, Cont1);
         display.displayChange();
         display.dataDisplay(c1, u1, Cont1);
@@ -48,6 +48,7 @@ public class Test {
         display.dataDisplay(c1, u1, Cont1);
         display.displayChange();
         display.dataDisplay(c1, u1, Cont1);
+    */
     }
 
     /*private static void TestClock () {
@@ -85,6 +86,7 @@ public class Test {
         Clock c1 = new Clock();
         c1.startTimer();
         TestDisplayData();
+        TestUI();
         //TestHAC();
         //TestClock();
         System.out.println(c1.endTimer());
