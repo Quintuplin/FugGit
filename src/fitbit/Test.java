@@ -1,6 +1,5 @@
 package fitbit;
 
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 
 import java.awt.*;
 import java.time.LocalDateTime;
@@ -40,11 +39,15 @@ public class Test {
 
 
         Clock c1 = new Clock();
-        display.dataDisplay(c1, BPS1, BPS1, HAC1, u1);
+        display.dataDisplay(c1, u1, Cont1);
         display.displayChange();
-        display.dataDisplay(c1, BPS1, BPS1, HAC1, u1);
+        display.dataDisplay(c1, u1, Cont1);
         display.displayChange();
-        display.dataDisplay(c1, BPS1, BPS1, HAC1, u1);
+        display.dataDisplay(c1, u1, Cont1);
+        display.displayChange();
+        display.dataDisplay(c1, u1, Cont1);
+        display.displayChange();
+        display.dataDisplay(c1, u1, Cont1);
     }
 
     /*private static void TestClock () {
@@ -82,7 +85,7 @@ public class Test {
         Clock c1 = new Clock();
         c1.startTimer();
         TestDisplayData();
-        TestHAC();
+        //TestHAC();
         //TestClock();
         System.out.println(c1.endTimer());
     }

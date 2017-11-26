@@ -23,11 +23,9 @@ public class HAC {
         activity = 0;
     }
 
-
-    private void calculateHeartRate(){
-        DataExpert D1 = new DataExpert();
-        heartRate = D1.getBPSData();
-
+    //Calculates the heart rate by aquiring the BPS data from StepBPSData
+    private void calculateHeartRate(StepBPSData BPSDATA){
+        heartRate = BPSDATA.getBPS();
     }
 
     //Male: ((-55.0969 + (0.6309 x HR) + (0.1988 x W) + (0.2017 x A))/4.184) x 60 x T
@@ -35,6 +33,9 @@ public class HAC {
     // [ (AGE_IN_YEAR x 0.2017) - (WEIGHT_IN_KILOGRAM x 0.09036)+ (HEART_BEAT_PER_MINUTE x 0.6309) - 55.0969] x DURATION_IN_MINUTE / 4.184
     //Calories Burned = [(Age x 0.074) — (Weight x 0.05741) + (Heart Rate x 0.4472) — 20.4022] x Time / 4.184.
 
+
+    //Calculates the amount of calories burned based on the User Data and time spent being active, as well
+    //as the average heart rate over that time
     private double calculateCalories(int age, double weight, char sex, int heartRate, double time){
         if (sex == 'm'){
             return (((age * 0.2017)- (weight * 0.09036) + (heartRate* 0.6309) - 55.0969) * time) / 4.184;
@@ -50,13 +51,9 @@ public class HAC {
     }
 */
 
-    private void getUserData(){
-
-    }
-
-    private void updateCal(UserData u1, float time1, int BPS1){ //Pass Settings Expert
-        //Settings expert gets User data here
-        heartRate = BPS1;
+    //Updates the calories burned based on User Data, the time spent active and the average heart rate over that time
+    private void updateCal(UserData u1, float time1, StepBPSData BPS1){
+        heartRate = BPS1.getBPS();
         int age = u1.getAge();
         float weight = u1.getWeight();
         char sex = u1.getSex();
@@ -64,12 +61,14 @@ public class HAC {
         caloriesBurned = calculateCalories(age, weight, sex, heartRate, time);
     }
 
-
+    //Gets heart rate by creating a new instance of StepsBPSData and acquiring the necessary BPS data. It also updates the HeartRate of HAC
     public int getHeartRate(){
-       return heartRate;
+        StepBPSData NEWHRT = new StepBPSData();
+        calculateHeartRate(NEWHRT);
+        return heartRate;
     }
-
-    public double getCalories(UserData u1, float time, int BPS1) {
+    //Gets calories from HAC and updates it at the same time
+    public double getCalories(UserData u1, float time, StepBPSData BPS1) {
         updateCal(u1, time, BPS1);
         return caloriesBurned;
     }

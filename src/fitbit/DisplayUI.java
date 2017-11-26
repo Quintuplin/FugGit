@@ -31,32 +31,55 @@ public class DisplayUI {
     }
 
     //output data to display
-    public void dataDisplay(Clock clock, StepBPSData steps, StepBPSData BPS, HACData HACD, UserData u1){
-        if (menu ==0){
-            String time = clock.currentTime();
-            String date = clock.currentDate();
-            System.out.println(time + "|" + date);
+    //Controller Will most likely be passed in as well
+    public void dataDisplay(Clock clock, UserData u1, Controller Controller1){
+        DataExpert dataExpert1 = new DataExpert();
+        StepBPSData STPBPS1 =  new StepBPSData();
+        HACData HACData1 = new HACData();
 
-            //int steps = StepBPSData.getSteps();
+        if (menu == 0){
+            boolean onScreen = true;
+            while(onScreen == true) {
+                if(Controller1.buttonListen() == false) {
+                    String time = clock.currentTime();
+                    String date = clock.currentDate();
+                    System.out.println(time + "|" + date + "\n");
+                }
+                else{
+                    onScreen = false;
+                }
+            }
             //Call Java swing method that displays menu 1 taking in steps time and date as parameters
-            //display menu 1; clock, heartrate, steps?
+            //display menu 1: clock
         }
         else if (menu == 1){
-            int step = steps.getSteps();
-            System.out.println("Steps: " + step);
-            int BPS1 = BPS.getBPS();
-            System.out.println("BPS: " + BPS1);
-            //display menu 2;
+            boolean onScreen = true;
+            while (onScreen == true) {
+                if (Controller1.buttonListen() == false) {
+                    int step1 = dataExpert1.getStepData(STPBPS1);
+                    int HR = dataExpert1.getHearRate(HACData1);
+                    System.out.println("Steps: " + step1);
+                    System.out.println("HeartRate: " + HR + "\n");
+                    //display Heart rate and steps
+                }
+                else {
+                    onScreen = false;
+                }
+            }
         }
         else if (menu == 2){
-            float time = 60;
-            double cal = HACD.getCaloriesBurned(u1,time);
-            System.out.println("Calories Burned: " + cal);
+            float time = 5; // TIME FOR CALORIES
+            double cal = dataExpert1.getCaloriesBurned(HACData1, u1, time, STPBPS1);
+            System.out.println("Calories Burned: " + cal + "\n");
+            //Displays Calories burned
         }
-        else if (menu == 3);
-        //goes on for each menu
+        else if (menu == 3){
+            System.out.println("Menu 3 (Activity Menu(NOT FINISHED)) \n");
+            //Will display Activity
+        }
     }
 
+    //How display is changed
     public void displayChange(){
         menu = ++menu%4;
         menub = 0;

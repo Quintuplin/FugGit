@@ -1,5 +1,6 @@
 package fitbit;
 
+
 /**
  * Controller.java
  * AUTHOR: TEAM HUNGRY
@@ -10,7 +11,10 @@ package fitbit;
  */
 
 public class Controller {
+    static int sum;
+
     public void initialize(UserData user){
+        sum = 0;
         Clock.init();
         int age = 49; //Get age from UI PLACEHOLDER FOR NOW
         int weight = 155; //Get weight from UI
@@ -32,6 +36,25 @@ public class Controller {
         //TEST start generating sensor data
         //initialize Data modules
         //run code
+    }
+
+    //Controller button that listens for the Java swing button being pressed
+    public boolean buttonListen(){
+        boolean pressed = false;
+        if(sum == 10){
+            pressed = true;
+        }
+        if(pressed == true){
+        //if(javaSwingButton.isPressed?() == true){ //Java swing buttons should have a isPressed?() function that should be a listener of
+                                                //the given button. If the listener returns true then button has been pressed and changes
+                                                //isPressed()? to true. Following this
+            sum = 0;                                    //the controller button listen which will then tell displayData to change pages.
+            return true;
+        }
+        else {
+            sum = ++sum;
+            return false;
+        }
     }
 
 

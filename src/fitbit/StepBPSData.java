@@ -12,24 +12,37 @@ package fitbit;
 
 public class StepBPSData {
     private int steps;
-    private  int bps;
+    private  int [] bps;
+    private int avgBPM;
 
     public StepBPSData(){
         steps = 0;
-        bps = 0;
+        int bps[];
+        bps = new int [5];
+        for(int i = 0; i < 5; i++){
+            bps [i] = 0;
+        }
+        avgBPM = 0;
     }
 
     private void setBpsData(){
-        bps = StepBPS.BPSCheat();
+        int sum = 0;
+        int bps[];
+        bps = new int [5];
+        for(int i = 0; i < 5; i++) {
+            bps[i] = StepBPS.BPSCheat();
+            sum = sum + bps[i];
+        }
+        avgBPM = sum/5;
     }
 
     public int getBPS() {
         setBpsData();
-        return bps;
+        return avgBPM;
     }
 
     private void setSteps(){
-        steps = StepBPS.stepCheat();
+        steps = steps + StepBPS.stepCheat();
     }
 
     public int getSteps() {

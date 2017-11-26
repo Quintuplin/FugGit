@@ -18,15 +18,21 @@ import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 
 public class DataExpert {
 
+    //Gets calories burned from HACData, Needs HACData, UserData and BPSData as params,
+    public double getCaloriesBurned(HACData HAC1, UserData u1, Float time, StepBPSData BPS1){
+        double calories = HAC1.getCaloriesBurned(u1, time, BPS1);
+        return calories;
+    }
 
-    public int getStepData(StepBPSData step) {
-        int steps = step.getSteps();
+    //Gets steps from StepBPS
+    public int getStepData(StepBPSData Step1) {
+        int steps = Step1.getSteps();
         return steps;
     }
 
-    public int getBPSData(){
-        StepBPSData BPS1 = new StepBPSData();
-        int BPS = BPS1.getBPS();
+    //Gets HeartRate from HACData
+    public int getHearRate(HACData HAC1){
+        int BPS = HAC1.getHeartRate();
         return BPS;
     }
 
