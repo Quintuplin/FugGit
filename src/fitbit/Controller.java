@@ -30,7 +30,7 @@ public class Controller {
         //Possibly put the listener into the parameters so we dont have to create extra vars
         user.setUserData(age, weight, height, sex);
 
-        UI1.displayMenu1();
+        //UI1.displayMenu1();
         display.dataDisplay(clock1, user, controller1, UI1);
 
         //get userData

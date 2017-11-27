@@ -52,8 +52,9 @@ public class HAC {
 */
 
     //Updates the calories burned based on User Data, the time spent active and the average heart rate over that time
-    private void updateCal(UserData u1, float time1, StepBPSData BPS1){
-        heartRate = BPS1.getBPS();
+    private void updateCal(UserData u1, float time1){
+        StepBPSData BPS1 = new StepBPSData();
+        calculateHeartRate(BPS1);
         int age = u1.getAge();
         float weight = u1.getWeight();
         char sex = u1.getSex();
@@ -62,14 +63,15 @@ public class HAC {
     }
 
     //Gets heart rate by creating a new instance of StepsBPSData and acquiring the necessary BPS data. It also updates the HeartRate of HAC
-    public int getHeartRate(){
+    public int setHACDataHeartRate(){
         StepBPSData NEWHRT = new StepBPSData();
         calculateHeartRate(NEWHRT);
         return heartRate;
     }
     //Gets calories from HAC and updates it at the same time
-    public double getCalories(UserData u1, float time, StepBPSData BPS1) {
-        updateCal(u1, time, BPS1);
+    public double getCalories(UserData u1, float time) {
+        //Create new settings expert which finds UserData. This allows UserData to be decoupled (CANT THINK OF SOLUTION YET!!!)
+        updateCal(u1, time);
         return caloriesBurned;
     }
 

@@ -32,16 +32,16 @@ public class DisplayUI {
 
     //output data to display
     //Controller Will most likely be passed in as well
-    public void dataDisplay(Clock clock, UserData u1, Controller Controller1, UI UI1) {
+    public void dataDisplay(Clock clock, UserData u1, Controller Controller1, UI UI1){
         DataExpert dataExpert1 = new DataExpert();
-        StepBPSData STPBPS1 = new StepBPSData();
+        StepBPSData STPBPS1 =  new StepBPSData();
         HACData HACData1 = new HACData();
 
         //Display UI
-        //UI1.button1();
+        UI1.button1();
 
-        int i = 2;
-        while (i < 2) {
+        int i = 0;
+        while(i < 2) {
             if (menu == 0) {
                 boolean onScreen = true;
                 while (onScreen == true) {
@@ -72,13 +72,14 @@ public class DisplayUI {
                 }
             } else if (menu == 2) {
                 float time = 60; // TIME FOR CALORIES
-                double cal = dataExpert1.getCaloriesBurned(HACData1, u1, time, STPBPS1);
+                double cal = dataExpert1.getCaloriesBurned(HACData1, u1, time);
                 System.out.println("Calories Burned: " + cal + "\n");
                 //Displays Calories burned
             } else if (menu == 3) {
                 System.out.println("Menu 3 (Activity Menu(NOT FINISHED)) \n");
                 //Will display Activity
             }
+            i++;
         }
     }
 

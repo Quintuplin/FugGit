@@ -23,7 +23,7 @@ public class SettingsExpert {
 
 
     public void getUserData(){
-        Controller cont = new Controller();
-
+    //Dont know how put pull UserData out of the instance of User created in the Controller init without having
+        // to either pass a UserData param (defeats the purpose of Settings expert) or creating a new UserData instance (Doesnt have the same var values)
     }
 }

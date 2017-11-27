@@ -86,7 +86,7 @@ public class Test {
         Clock c1 = new Clock();
         c1.startTimer();
         TestDisplayData();
-        TestUI();
+        //TestUI();
         //TestHAC();
         //TestClock();
         System.out.println(c1.endTimer());
