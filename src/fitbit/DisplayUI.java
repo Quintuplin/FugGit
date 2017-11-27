@@ -16,14 +16,6 @@ package fitbit;
 public class DisplayUI{
     static int menu = 0;
     static int menub = 0;
-    public static void main(String[] args) {
-        //initScreen(); //starts the simulation
-        while(true) {
-            //dataDisplay(); //displays the currently selected menu
-            buttonListen(); //listens for button presses
-        }
-
-    }
 
     public void DisplayUI(){
         menu = 0;

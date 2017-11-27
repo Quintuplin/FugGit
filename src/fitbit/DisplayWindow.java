@@ -121,7 +121,7 @@ public class DisplayWindow implements ActionListener{
         DisplayWindow window = new DisplayWindow();
     }
 
-    public static void main(String[] args) {
+    public static void runUI(){
         javax.swing.SwingUtilities.invokeLater(new Runnable(){
             public void run(){
                 showGUI();

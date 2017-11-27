@@ -13,13 +13,7 @@ import java.util.Random;
  */
 
 public class StepBPS {
-
-    public static void main(String[] args) {
-
-    }
-
     private static void getData(){
-
         //for now, no simulated inputs - just simulated trash data
         //sensorTime should be initialized to = System.nanoTime();
         //from there on it should maintain itself

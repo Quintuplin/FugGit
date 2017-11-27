@@ -1,5 +1,8 @@
 package fitbit;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 import java.awt.*;
 import java.time.LocalDateTime;
@@ -11,10 +14,10 @@ import java.util.Optional;
 public class Test {
 
     private static void TestUI(){
-
+        DisplayWindow.runUI();
     }
 
-    private  static void TestHAC() {
+    private static void TestHAC() {
         System.out.println("INITIALIZE HAC and User Data");
         DisplayUI display = new DisplayUI();
         Clock c1 = new Clock();
@@ -82,13 +85,17 @@ public class Test {
     }
 */
     public static void main(String[] args) {
-
+        //test Clock
         Clock c1 = new Clock();
         c1.startTimer();
         TestDisplayData();
-        //TestUI();
-        //TestHAC();
+        TestUI();
+        TestHAC();
         //TestClock();
         System.out.println(c1.endTimer());
+
+        //test UI
+        System.out.println("testing UI");
+        TestUI();
     }
 }
