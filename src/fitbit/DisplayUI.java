@@ -13,7 +13,7 @@ package fitbit;
  *
  *      RDD: CALLS INFORMATION EXPERT
  */
-public class DisplayUI {
+public class DisplayUI{
     static int menu = 0;
     static int menub = 0;
     public static void main(String[] args) {
