@@ -22,7 +22,7 @@ public class DisplayWindow implements ActionListener{
         displayFrame.setSize(new Dimension(600,600));
 
         //create and set up panel
-        displayPanel = new JPanel(new GridLayout(6,6));
+        displayPanel = new JPanel(new GridLayout(10,10));
 
         //add widgets
         addWidgets();
@@ -54,18 +54,24 @@ public class DisplayWindow implements ActionListener{
         caloriesBurned = new JLabel("Calories Burned", SwingConstants.LEFT);
 
         //buttons
-        sideButton = new JButton("Side Button");
-        frontButton = new JButton("Front Button");
-        senseStep = new JButton("Sense Step");
-        senseBeat = new JButton("Sense Beat");
+        sideButton = new JButton("Side Button (left arrow)");
+        frontButton = new JButton("Front Button (right arrow)");
+        senseStep = new JButton("Sense Step (V key)");
+        senseBeat = new JButton("Sense Beat (B key)");
+        sideButton.setMnemonic(KeyEvent.VK_LEFT);
         sideButton.addActionListener(this);
+        frontButton.setMnemonic(KeyEvent.VK_RIGHT);
         frontButton.addActionListener(this);
+        senseStep.setMnemonic(KeyEvent.VK_V);
         senseStep.addActionListener(this);
+        senseBeat.setMnemonic(KeyEvent.VK_B);
         senseBeat.addActionListener(this);
 
         //pop it all to the container
         displayPanel.add(sideButton);
         displayPanel.add(frontButton);
+        displayPanel.add(senseStep);
+        displayPanel.add(senseBeat);
         displayPanel.add(timeHours);
         displayPanel.add(timeMinutes);
         displayPanel.add(timeSeconds);
