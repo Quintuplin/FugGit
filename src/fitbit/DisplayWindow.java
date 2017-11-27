@@ -86,6 +86,18 @@ public class DisplayWindow implements ActionListener{
 
     public void actionPerformed(ActionEvent event){
         //change menu
+        if(event.getSource() == sideButton) {
+            System.out.println("SIDE");
+        }
+        else if(event.getSource() == frontButton) {
+            System.out.println("FRONT");
+        }
+        else if(event.getSource() == senseBeat) {
+            System.out.println("BEAT");
+        }
+        else if(event.getSource() == senseStep) {
+            System.out.println("STEP");
+        }
     }
 
     private static void showGUI(){
