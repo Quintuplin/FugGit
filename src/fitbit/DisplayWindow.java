@@ -8,8 +8,7 @@ public class DisplayWindow implements ActionListener{
 
     JFrame displayFrame;
     JPanel displayPanel;
-    JLabel timeHours, timeMinutes, timeSeconds, dateDays, dateMonths,
-            dateYears, heartrate, steps, activity, caloriesBurned;
+    JLabel time, date, heartrate, steps, activity, caloriesBurned;
     JButton sideButton;
     JButton frontButton;
     JButton senseStep;
@@ -42,12 +41,8 @@ public class DisplayWindow implements ActionListener{
     private void addWidgets(){
 
         //labels
-        timeHours = new JLabel("Hours", SwingConstants.LEFT);
-        timeMinutes = new JLabel("Minutes", SwingConstants.LEFT);
-        timeSeconds = new JLabel("Seconds", SwingConstants.LEFT);
-        dateMonths = new JLabel("Months", SwingConstants.LEFT);
-        dateDays = new JLabel("Days", SwingConstants.LEFT);
-        dateYears = new JLabel("Years", SwingConstants.LEFT);
+        time = new JLabel("Time", SwingConstants.LEFT);
+        date = new JLabel("Date", SwingConstants.LEFT);
         heartrate = new JLabel("Heart Rate", SwingConstants.LEFT);
         steps = new JLabel("Steps", SwingConstants.LEFT);
         activity = new JLabel("Activity", SwingConstants.LEFT);
@@ -72,31 +67,51 @@ public class DisplayWindow implements ActionListener{
         displayPanel.add(frontButton);
         displayPanel.add(senseStep);
         displayPanel.add(senseBeat);
-        displayPanel.add(timeHours);
-        displayPanel.add(timeMinutes);
-        displayPanel.add(timeSeconds);
-        displayPanel.add(dateDays);
-        displayPanel.add(dateMonths);
-        displayPanel.add(dateYears);
+        displayPanel.add(time);
+        displayPanel.add(date);
         displayPanel.add(heartrate);
         displayPanel.add(steps);
         displayPanel.add(activity);
         displayPanel.add(caloriesBurned);
+
+        date.setVisible(false);
+        heartrate.setVisible(false);
+        activity.setVisible(false);
+        caloriesBurned.setVisible(false);
     }
 
     public void actionPerformed(ActionEvent event){
         //change menu
         if(event.getSource() == sideButton) {
-            System.out.println("SIDE");
+            System.out.println("SIDE BUTTON PRESSED");
+
+            if(time.isVisible()){
+                time.setVisible(!time.isVisible());
+                steps.setVisible(!steps.isVisible());
+                date.setVisible(!date.isVisible());
+                activity.setVisible(!activity.isVisible());
+            }else if(date.isVisible()){
+                date.setVisible(!date.isVisible());
+                activity.setVisible(!activity.isVisible());
+                heartrate.setVisible(!heartrate.isVisible());
+                caloriesBurned.setVisible(!caloriesBurned.isVisible());
+            }else if(heartrate.isVisible()){
+                heartrate.setVisible(!heartrate.isVisible());
+                caloriesBurned.setVisible(!caloriesBurned.isVisible());
+                time.setVisible(!time.isVisible());
+                steps.setVisible(!steps.isVisible());
+            }
         }
+
+
         else if(event.getSource() == frontButton) {
-            System.out.println("FRONT");
+            System.out.println("FRONT BUTTON PRESSED");
         }
         else if(event.getSource() == senseBeat) {
-            System.out.println("BEAT");
+            System.out.println("BEAT DETECTED");
         }
         else if(event.getSource() == senseStep) {
-            System.out.println("STEP");
+            System.out.println("STEP DETECTED");
         }
     }
 
