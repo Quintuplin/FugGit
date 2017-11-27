@@ -1,6 +1,6 @@
 package fitbit;
 
-import sun.nio.cs.US_ASCII;
+//import sun.nio.cs.US_ASCII;
 
 /**
  * HACData.java
