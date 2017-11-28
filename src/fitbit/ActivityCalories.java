@@ -15,16 +15,16 @@ public class ActivityCalories {
 
     private double caloriesBurned = 0;
     //private float activity = 0;
+    float aBPM = 0;
+    int i = 0;
 
-    //CALORIES BURNED FORMULA
-    //Male: ((-55.0969 + (0.6309 x HR) + (0.1988 x W) + (0.2017 x A))/4.184) x 60 x T
-    //Female: ((-20.4022 + (0.4472 x HR) - (0.1263 x W) + (0.074 x A))/4.184) x 60 x T
-    //[ (AGE_IN_YEAR x 0.2017) - (WEIGHT_IN_KILOGRAM x 0.09036)+ (HEART_BEAT_PER_MINUTE x 0.6309) - 55.0969] x DURATION_IN_MINUTE / 4.184
-    //Calories Burned = [(Age x 0.074) — (Weight x 0.05741) + (Heart Rate x 0.4472) — 20.4022] x Time / 4.184.
+    //finds average BPM for current day
+    private double averageBPM() {
+    //    aBPM += StepsHeartrate.getBPM() - aBPM / i++;
+        return 0.0;
+    }
 
-
-    //Calculates the amount of calories burned based on the User Data and time spent being active, as well
-    // as the average heart rate over that time
+    //Calculates the amount of calories burned in current day
     private double calculateCalories(int age, double weight, boolean isMale, int BPM, double time){
         if (isMale){
             double V02Max = ((-55.0969 + (.6309 * BPM) + (.1988 * weight) + (.2017 * age)) / 4.184) * 60 * time;
@@ -45,10 +45,10 @@ public class ActivityCalories {
     }
 
     //Gets calories from ActivityCalories and updates it at the same time
-    public double getCalories(UserData u1, float time) {
+    public double getCalories() {
         //Create new settings expert which finds UserData. This allows UserData to be decoupled (CANT THINK OF SOLUTION YET!!!)
         UserData U1 = new UserData();
-        updateCal(U1, time);
+        //updateCal(U1, time);
         return caloriesBurned;
     }
 }

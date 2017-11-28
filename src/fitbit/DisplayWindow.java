@@ -10,9 +10,9 @@ import java.util.concurrent.TimeUnit;
 
 class DisplayWindow implements ActionListener {
 
-    private int age; //Get age from UI
-    private int weight; //Get weight from UI
-    private boolean sex; //Get sex from UI
+    private int age;
+    private int weight;
+    private boolean sex;
 
     private JPanel displayPanel;
     private JLabel time, date, heartrate, steps, activity, caloriesBurned;
@@ -22,7 +22,7 @@ class DisplayWindow implements ActionListener {
     private JButton senseBeat;
 
     //one instance of everything, kept here
-    private Controller controller = new Controller();
+    private DataExpert dataExpert = new DataExpert();
 
     //constant updates
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
@@ -129,25 +129,26 @@ class DisplayWindow implements ActionListener {
     }
 
     //get data
+    //@todo hardcoded for now
     private void getUserData() {
-        age = 25; //Get age from UI
-        weight = 155; //Get weight from UI
-        sex = true; //Get sex from UI
+        age = 25;
+        weight = 155;
+        sex = true;
     }
 
     //set data
     public void setUserData(){
-        controller.setUserData(age, weight, sex);
+        dataExpert.setUserData(age, weight, sex);
     }
 
     //get data
     private void getData(){
-        time.setText("Time: " +controller.getTime());
-        date.setText("Date: " +controller.getDate());
-        heartrate.setText("Heartrate: " +controller.getHeartrate());
-        steps.setText("Steps: " +controller.getSteps());
-        activity.setText("Active %: " +controller.getActivity());
-        caloriesBurned.setText("Calories Burned: " +controller.getCalories());
+        time.setText("Time: " + dataExpert.getTime());
+        date.setText("Date: " + dataExpert.getDate());
+        heartrate.setText("Heartrate: " + dataExpert.getHeartrate());
+        steps.setText("Steps: " + dataExpert.getSteps());
+        activity.setText("Active %: " + dataExpert.getActivity());
+        caloriesBurned.setText("Calories Burned: " + dataExpert.getCalories());
     }
 
     //create and display window
