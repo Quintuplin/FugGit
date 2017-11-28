@@ -88,8 +88,8 @@ class DisplayWindow implements ActionListener {
         //pop it all to the container
         displayPanel.add(sideButton);
         displayPanel.add(frontButton);
-        //displayPanel.add(senseStep);
-        //displayPanel.add(senseBeat);
+        displayPanel.add(senseStep);
+        displayPanel.add(senseBeat);
         displayPanel.add(time);
         displayPanel.add(date);
         displayPanel.add(heartrate);
