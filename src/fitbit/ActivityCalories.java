@@ -47,7 +47,9 @@ public class ActivityCalories {
 
     public float getActivity(){
         if (Sensors.BPSCheat() > 100)
-            activity += (.01);
+            if (activity < 99.8) {
+                activity += (.01);
+            }else activity = 100;
         return activity;
     }
 }

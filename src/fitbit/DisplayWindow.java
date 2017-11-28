@@ -63,6 +63,14 @@ class DisplayWindow implements ActionListener {
         activity = new JLabel("Activity", SwingConstants.CENTER);
         caloriesBurned = new JLabel("Calories Burned", SwingConstants.CENTER);
 
+        //fonts
+        time.setFont(new Font("Comic Sans", Font.PLAIN, 34));
+        date.setFont(new Font("Comic Sans", Font.PLAIN, 34));
+        heartrate.setFont(new Font("Comic Sans", Font.PLAIN, 34));
+        steps.setFont(new Font("Comic Sans", Font.PLAIN, 34));
+        activity.setFont(new Font("Comic Sans", Font.PLAIN, 34));
+        caloriesBurned.setFont(new Font("Comic Sans", Font.PLAIN, 34));
+
         //buttons
         sideButton = new JButton("Side Button (left arrow)");
         frontButton = new JButton("Front Button (right arrow)");
@@ -150,17 +158,17 @@ class DisplayWindow implements ActionListener {
 
     //get data
     private void getData(){
-        time.setText("Time: " + dataExpert.getTime());
-        date.setText("Date: " + dataExpert.getDate());
+        time.setText(dataExpert.getTime());
+        date.setText(dataExpert.getDate());
         heartrate.setText("Heartrate: " + dataExpert.getHeartrate());
         steps.setText("Steps: " + dataExpert.getSteps());
-        activity.setText("Active %: " + dataExpert.getActivity());
-        caloriesBurned.setText("Calories Burned: " + dataExpert.getCalories());
+        activity.setText("Goal %: " + dataExpert.getActivity().substring(0, 4));
+        caloriesBurned.setText("Calories: " + dataExpert.getCalories());
     }
 
     //create and display window
     private static void showGUI() {
-        JFrame.setDefaultLookAndFeelDecorated(true);
+        //JFrame.setDefaultLookAndFeelDecorated(true);
         DisplayWindow window = new DisplayWindow();
     }
     public static void runUI() {

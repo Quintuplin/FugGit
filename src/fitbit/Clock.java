@@ -44,8 +44,9 @@ class Clock {
     public void startTimer(){
         timer = System.nanoTime();
     }
+    //start at instantiation
 
     public float endTimer(){
-        return (float) ((System.nanoTime()- timer) / 1000000000.0);
+        return (float) ((System.nanoTime()- timer) / 1000000000.0 / 60.0);
     }
 }
