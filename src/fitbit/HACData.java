@@ -17,8 +17,8 @@ public class HACData {
     private double caloriesBurned;
     private float activity;
 
-    HACData hacData = new HACData();
-    HAC hac = new HAC();
+//    HACData hacData = new HACData();
+ //   HAC hac = new HAC();
 
     public HACData(){
         heartRate = 0;
@@ -52,7 +52,7 @@ public class HACData {
     //Gets the calories burned but updates it first before calling it
     public double getCalories(){//UserData u1, float time) {
         //setCaloriesBurned(u1, time);
-        this.caloriesBurned = hac.getCalories();
+        //this.caloriesBurned = hacData.getCalories();
 
         return this.caloriesBurned;
     }

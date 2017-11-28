@@ -3,25 +3,32 @@ package fitbit;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-public class DisplayWindow implements ActionListener{
+class DisplayWindow implements ActionListener {
 
-    JFrame displayFrame;
-    JPanel displayPanel;
-    JLabel time, date, heartrate, steps, activity, caloriesBurned;
-    JButton sideButton;
-    JButton frontButton;
-    JButton senseStep;
-    JButton senseBeat;
+    private JPanel displayPanel;
+    private JLabel time, date, heartrate, steps, activity, caloriesBurned;
+    private JButton sideButton;
+    private JButton frontButton;
+    private JButton senseStep;
+    private JButton senseBeat;
 
-    public DisplayWindow(){
+    private Controller controller = new Controller();
+
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+    private DisplayWindow() {
         //create window
-        displayFrame = new JFrame("FITBIT DEMO");
+        JFrame displayFrame = new JFrame("FITBIT DEMO");
         displayFrame.setDefaultCloseOperation((JFrame.EXIT_ON_CLOSE));
-        displayFrame.setSize(new Dimension(600,600));
+        displayFrame.setSize(new Dimension(600, 600));
 
         //create and set up panel
-        displayPanel = new JPanel(new GridLayout(10,10));
+        displayPanel = new JPanel(new GridLayout(10, 10));
 
         //add widgets
         addWidgets();
@@ -37,7 +44,7 @@ public class DisplayWindow implements ActionListener{
         displayFrame.setVisible(true);
     }
 
-    private void addWidgets(){
+    private void addWidgets() {
         //labels
         time = new JLabel("Time", SwingConstants.LEFT);
         date = new JLabel("Date", SwingConstants.LEFT);
@@ -77,76 +84,65 @@ public class DisplayWindow implements ActionListener{
         heartrate.setVisible(false);
         activity.setVisible(false);
         caloriesBurned.setVisible(false);
+
+        //start the updates
+        this.update();
     }
 
-    public void actionPerformed(ActionEvent event){
+    public void actionPerformed(ActionEvent event) {
         //change menu
-        if(event.getSource() == sideButton) {
+        if (event.getSource() == sideButton) {
             System.out.println("SIDE BUTTON PRESSED");
 
-            if(time.isVisible()){
+            if (time.isVisible()) {
                 time.setVisible(!time.isVisible());
                 steps.setVisible(!steps.isVisible());
                 date.setVisible(!date.isVisible());
                 activity.setVisible(!activity.isVisible());
-            }else if(date.isVisible()){
+            } else if (date.isVisible()) {
                 date.setVisible(!date.isVisible());
                 activity.setVisible(!activity.isVisible());
                 heartrate.setVisible(!heartrate.isVisible());
                 caloriesBurned.setVisible(!caloriesBurned.isVisible());
-            }else if(heartrate.isVisible()){
+            } else if (heartrate.isVisible()) {
                 heartrate.setVisible(!heartrate.isVisible());
                 caloriesBurned.setVisible(!caloriesBurned.isVisible());
                 time.setVisible(!time.isVisible());
                 steps.setVisible(!steps.isVisible());
             }
-        }else if(event.getSource() == frontButton) {
+        } else if (event.getSource() == frontButton) {
             System.out.println("FRONT BUTTON PRESSED");
-        }else if(event.getSource() == senseBeat) {
+        } else if (event.getSource() == senseBeat) {
             System.out.println("BEAT DETECTED");
-        }else if(event.getSource() == senseStep) {
+        } else if (event.getSource() == senseStep) {
             System.out.println("STEP DETECTED");
         }
     }
 
-    public void getData(DataExpert data){
-        data.getCaloriesBurned();
-        time.setText("holla");
+    private void getData(){
+        time.setText(controller.getTime());
     }
 
-    private static void showGUI(){
+    private static void showGUI() {
         JFrame.setDefaultLookAndFeelDecorated(true);
         DisplayWindow window = new DisplayWindow();
     }
 
-    public static void runUI(){
-        javax.swing.SwingUtilities.invokeLater(new Runnable(){
-            public void run(){
+    public static void runUI() {
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
                 showGUI();
             }
         });
     }
+
+    private void update(){
+        final Runnable updoot = new Runnable() {
+            @Override
+            public void run() {
+                getData();
+            }
+        };
+        final ScheduledFuture<?> updootHandle = scheduler.scheduleAtFixedRate(updoot, 250, 250, TimeUnit.MILLISECONDS);
+    }
 }
-
-
-//FROM FORMER DISPLAY UI
-//
-// if (userDataController1.buttonListen() == false) {
-//         int step1 = dataExpert1.getStepData(STPBPS1);
-//         int HR = dataExpert1.getHearRate(HACData1);
-//         System.out.println("Steps: " + step1);
-//         System.out.println("HeartRate: " + HR + "\n");
-//         //display Heart rate and steps
-//         } else {
-//         onScreen = false;
-//         displayChange();
-//         }
-//         }
-//         } else if (menu == 2) {
-//         float time = 60; // TIME FOR CALORIES
-//         double cal = dataExpert1.getCaloriesBurned(HACData1, u1, time);
-//         System.out.println("Calories Burned: " + cal + "\n");
-//         //Displays Calories burned
-//         } else if (menu == 3) {
-//         System.out.println("Menu 3 (Activity Menu(NOT FINISHED)) \n");
-////Will display Activity

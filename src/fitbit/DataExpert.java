@@ -1,7 +1,5 @@
 package fitbit;
 
-//import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
-
 /**
  * DataExpert.java
  * AUTHOR: TEAM HUNGRY
@@ -39,6 +37,6 @@ public class DataExpert {
     }
 
     int getTimeData(){
-        return ClockData.getTimeData();
+        return 1;//ClockData.getTimeData();
     }
 }
