@@ -7,9 +7,9 @@ public class Test {
     }
 
     private static void TestHAC() {
-        System.out.println("INITIALIZE HAC and User Data");
+        System.out.println("INITIALIZE ActivityCalories and User Data");
         Clock c1 = new Clock();
-        StepBPSData BPS1 = new StepBPSData();
+        StepsHeartrate BPS1 = new StepsHeartrate();
         //UserDataController Cont1 = new UserDataController();
         //Cont1.initialize();
 

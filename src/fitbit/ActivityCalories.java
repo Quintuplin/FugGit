@@ -1,31 +1,31 @@
 package fitbit;
 
 /**
- * HAC.java
+ * ActivityCalories.java
  * AUTHOR: TEAM HUNGRY
  * CLASS: CSCI 360-01
  * PURPOSE: HEARTRATE, ACTIVITY, CALORIES
  * OTHER:
- *      1) PULLS NEEDED INFORMATION FROM StepBPSData, Clock, and UserData
+ *      1) PULLS NEEDED INFORMATION FROM StepsHeartrate, Clock, and UserData
  *      2) CALCULATES HEARTRATE, ACTIVITY RATIO, AND CALORIES BURNED
  *      3) SENDS VALUES TO HACData
  */
 
-public class HAC {
+public class ActivityCalories {
 
     private int heartRate;
     private double caloriesBurned;
     private float activity;
 
-    public HAC(){
+    public ActivityCalories(){
         heartRate = 0;
         caloriesBurned = 0;
         activity = 0;
     }
 
-    //Calculates the heart rate by aquiring the BPS data from StepBPSData
-    private void calculateHeartRate(StepBPSData BPSDATA){
-        heartRate = BPSDATA.getBPS();
+    //Calculates the heart rate by aquiring the BPS data from StepsHeartrate
+    private void calculateHeartRate(StepsHeartrate BPM){
+        heartRate = BPM.getBPM();
     }
 
     //Male: ((-55.0969 + (0.6309 x HR) + (0.1988 x W) + (0.2017 x A))/4.184) x 60 x T
@@ -53,7 +53,7 @@ public class HAC {
 
     //Updates the calories burned based on User Data, the time spent active and the average heart rate over that time
     private void updateCal(UserData u1, float time1){
-        StepBPSData BPS1 = new StepBPSData();
+        StepsHeartrate BPS1 = new StepsHeartrate();
         calculateHeartRate(BPS1);
         int age = u1.getAge();
         float weight = u1.getWeight();
@@ -62,13 +62,13 @@ public class HAC {
         caloriesBurned = calculateCalories(age, weight, sex, heartRate, time);
     }
 
-    //Gets heart rate by creating a new instance of StepsBPSData and acquiring the necessary BPS data. It also updates the HeartRate of HAC
+    //Gets heart rate by creating a new instance of StepsBPSData and acquiring the necessary BPS data. It also updates the HeartRate of ActivityCalories
     public int setHACDataHeartRate(){
-        StepBPSData NEWHRT = new StepBPSData();
+        StepsHeartrate NEWHRT = new StepsHeartrate();
         calculateHeartRate(NEWHRT);
         return heartRate;
     }
-    //Gets calories from HAC and updates it at the same time
+    //Gets calories from ActivityCalories and updates it at the same time
     public double getCalories(){//UserData u1, float time) {
         //Create new settings expert which finds UserData. This allows UserData to be decoupled (CANT THINK OF SOLUTION YET!!!)
         UserData U1 = new UserData();

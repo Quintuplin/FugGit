@@ -3,33 +3,25 @@ package fitbit;
 import java.util.Random;
 
 /**
- * StepBPS.java
+ * Sensors.java
  * AUTHOR: TEAM HUNGRY
  * CLASS: CSCI 360-01
- * PURPOSE: INTERPRETS INPUT DATA FROM SENSORS
- *      1) GETS RAW INPUTS FROM SENSORS
- *      2) CONVERTS INPUTS INTO BPS(FLOAT) AND STEP(INT) VALUES
- *      3) SENDS THESE VALUES TO THE STEPBPS DATASET
+ * PURPOSE: GENERATES REALISTIC SENSOR DATA
  */
 
-public class StepBPS {
-    private static void getData(){
-        //for now, no simulated inputs - just simulated trash data
-        //sensorTime should be initialized to = System.nanoTime();
-        //from there on it should maintain itself
-        //SetSteps(steapCheat());
-        //SetBPS(BPSCheat());
-    }
-
+public class Sensors {
+    //returns step data
     public static int stepCheat(){
-        return 5;
+        Random rand = new Random();
+        return rand.nextInt(10)/6;
     }
 
+    //returns BPS data
     public static int BPSCheat(){
         Random rand = new Random();
-        int random = rand.nextInt(5)+146;
-        return random;
+        return rand.nextInt(5)+146;
     }
+
     //Generates Data around the average heart rate for a given activity
         //Ex: Resting Heartrate is anywhere from 60 to 100 Beats per minute.
             //-So for generating these numbers do we want them in BPS or BPM? (BPM IS WAY EASIER) >>DEFINITELY BPM

@@ -5,17 +5,16 @@ package fitbit;
  * Controller.java
  * AUTHOR: TEAM HUNGRY
  * CLASS: CSCI 360-01
- * PURPOSE: Initializes everything and is a passthrough for UI set/get settings
+ * PURPOSE: Initializes everything and is a passthrough to UI
  */
 
 public class Controller {
 
-    //DisplayWindow displayWindow = new DisplayWindow();
-    private Clock clock = new Clock();
     //private UserData user = new UserData();
     //DataExpert dataExpert = new DataExpert();
-    StepBPSData stepBPSData =  new StepBPSData();
-    HACData hacData = new HACData();
+    private Clock clock = new Clock();
+    private StepsHeartrate stepsHeartrate =  new StepsHeartrate();
+    private HACData hacData = new HACData();
 
     public String getTime(){
         return this.clock.currentTime();
@@ -30,7 +29,7 @@ public class Controller {
     }
 
     public String getSteps(){
-        return Integer.toString(this.stepBPSData.getSteps());
+        return Integer.toString(this.stepsHeartrate.getSteps());
     }
 
     public String getActivity(){
