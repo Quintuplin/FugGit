@@ -1,16 +1,5 @@
 package fitbit;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-
-import java.awt.*;
-import java.time.LocalDateTime;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Optional;
-
 public class Test {
 
     private static void TestUI(){
@@ -19,10 +8,9 @@ public class Test {
 
     private static void TestHAC() {
         System.out.println("INITIALIZE HAC and User Data");
-        DisplayUI display = new DisplayUI();
         Clock c1 = new Clock();
         StepBPSData BPS1 = new StepBPSData();
-        Controller Cont1 = new Controller();
+        UserDataController Cont1 = new UserDataController();
         Cont1.initialize();
 
         //hac.calculateCalories(U1.getAge(), U1.getWeight(), U1.getSex(), BPS1.getBPS(), 60); //60 min is a placeholder as I cant wait an hour to see if it is done
@@ -35,9 +23,8 @@ public class Test {
     private static void TestDisplayData(){
         System.out.println("INITIALIZE Display Data");
         UserData u1 = new UserData();
-        DisplayUI display = new DisplayUI();
 
-        Controller Cont1 = new Controller();
+        UserDataController Cont1 = new UserDataController();
         Cont1.initialize();
 
 

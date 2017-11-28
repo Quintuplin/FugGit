@@ -129,3 +129,24 @@ public class DisplayWindow implements ActionListener{
         });
     }
 }
+//FROM FORMER DISPLAY UI
+//
+// if (userDataController1.buttonListen() == false) {
+//         int step1 = dataExpert1.getStepData(STPBPS1);
+//         int HR = dataExpert1.getHearRate(HACData1);
+//         System.out.println("Steps: " + step1);
+//         System.out.println("HeartRate: " + HR + "\n");
+//         //display Heart rate and steps
+//         } else {
+//         onScreen = false;
+//         displayChange();
+//         }
+//         }
+//         } else if (menu == 2) {
+//         float time = 60; // TIME FOR CALORIES
+//         double cal = dataExpert1.getCaloriesBurned(HACData1, u1, time);
+//         System.out.println("Calories Burned: " + cal + "\n");
+//         //Displays Calories burned
+//         } else if (menu == 3) {
+//         System.out.println("Menu 3 (Activity Menu(NOT FINISHED)) \n");
+////Will display Activity
