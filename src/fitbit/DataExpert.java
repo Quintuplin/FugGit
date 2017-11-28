@@ -39,6 +39,6 @@ public class DataExpert {
     }
 
     public String getCalories(){
-        return Double.toString(this.activityCalories.getCalories(userData, clock, stopTime));
+        return Double.toString(this.activityCalories.getCalories(userData, clock, stepsHeartrate, stopTime));
     }
 }
