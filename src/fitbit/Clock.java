@@ -12,11 +12,12 @@ import java.text.SimpleDateFormat;
  */
 
 class Clock {
-    private long timer;
+    private double timer;
     private String time;
     private String date;
 
     public Clock(){
+        startTimer();
         DateFormat df = new SimpleDateFormat("dd/MM/yy");
         DateFormat tf = new SimpleDateFormat("HH:mm:ss");
         Calendar calobj = Calendar.getInstance();
@@ -42,11 +43,12 @@ class Clock {
     }
 
     public void startTimer(){
-        timer = System.nanoTime();
+        timer = Double.parseDouble(this.currentTime().substring(0,2))
+                + Double.parseDouble(this.currentTime().substring(3,5)) / 60
+                + Double.parseDouble(this.currentTime().substring(6,8)) / (60 * 60);
     }
-    //start at instantiation
 
-    public float endTimer(){
-        return (float) ((System.nanoTime()- timer) / 1000000000.0 / 60.0);
+    public double endTimer(){
+        return timer;
     }
 }

@@ -64,12 +64,12 @@ class DisplayWindow implements ActionListener {
         caloriesBurned = new JLabel("Calories Burned", SwingConstants.CENTER);
 
         //fonts
-        time.setFont(new Font("Comic Sans", Font.PLAIN, 60));
-        date.setFont(new Font("Comic Sans", Font.PLAIN, 60));
-        heartrate.setFont(new Font("Comic Sans", Font.PLAIN, 60));
-        steps.setFont(new Font("Comic Sans", Font.PLAIN, 34));
-        activity.setFont(new Font("Comic Sans", Font.PLAIN, 34));
-        caloriesBurned.setFont(new Font("Comic Sans", Font.PLAIN, 34));
+        time.setFont(new Font("Comic Sans MS", Font.PLAIN, 60));
+        date.setFont(new Font("Comic Sans MS", Font.PLAIN, 60));
+        heartrate.setFont(new Font("Comic Sans MS", Font.PLAIN, 60));
+        steps.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
+        activity.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
+        caloriesBurned.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
 
         //buttons
         sideButton = new JButton("Side Button (left arrow)");
@@ -140,7 +140,7 @@ class DisplayWindow implements ActionListener {
     //updates
     private void update(){
         final Runnable updoot = new Runnable() {public void run() { getData(); }};
-        final ScheduledFuture<?> updootHandle = scheduler.scheduleAtFixedRate(updoot, 250, 250, TimeUnit.MILLISECONDS);
+        final ScheduledFuture<?> updootHandle = scheduler.scheduleAtFixedRate(updoot, 100, 100, TimeUnit.MILLISECONDS);
     }
 
     //get data
@@ -162,8 +162,8 @@ class DisplayWindow implements ActionListener {
         date.setText(dataExpert.getDate());
         heartrate.setText("BPM: " + dataExpert.getHeartrate());
         steps.setText("Steps: " + dataExpert.getSteps());
-        activity.setText("Goal %: " + dataExpert.getActivity());
-        caloriesBurned.setText("Calories: " + dataExpert.getCalories());
+        activity.setText("Goal %: " + String.format("%.2f", Double.parseDouble(dataExpert.getActivity())));
+        caloriesBurned.setText("Calories: " + String.format("%.2f", Double.parseDouble(dataExpert.getCalories())));
     }
 
     //create and display window

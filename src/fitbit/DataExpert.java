@@ -12,6 +12,7 @@ public class DataExpert {
     private StepsHeartrate stepsHeartrate =  new StepsHeartrate();
     private ActivityCalories activityCalories = new ActivityCalories();
     private UserData userData = new UserData();
+    double stopTime = clock.endTimer();
 
     public void setUserData(int age, int weight, boolean sex){
         userData.setUserData(age, weight, sex);
@@ -38,6 +39,6 @@ public class DataExpert {
     }
 
     public String getCalories(){
-        return Double.toString(this.activityCalories.getCalories());
+        return Double.toString(this.activityCalories.getCalories(userData, clock, stopTime));
     }
 }

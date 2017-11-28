@@ -14,13 +14,12 @@ public class ActivityCalories {
     float aBPM = 0;
     int i = 0;
 
-    private Clock clock = new Clock();
 
     //finds average BPM for current day
-    private double averageBPM() {
-    //    aBPM += StepsHeartrate.getBPM() - aBPM / i++;
-        return 0.0;
-    }
+//    private double averageBPM(StepsHeartrate stepsHeartrate){
+//        aBPM += stepsHeartrate.getBPM() - aBPM / i++;
+//        return 0.0;
+//    }
 
     //Calculates the amount of calories burned in current day
     private double calculateCalories(int age, double weight, boolean isMale, int BPM, double time){
@@ -34,14 +33,11 @@ public class ActivityCalories {
     }
 
     //Gets calories from ActivityCalories and updates it at the same time
-    public double getCalories(){
-        int age = 25;
-        int weight = 155;
-        boolean isMale = true;
+    public double getCalories(UserData userData, Clock clock, double stoptime){
         double time = Double.parseDouble(clock.currentTime().substring(0,2))
                 + Double.parseDouble(clock.currentTime().substring(3,5)) / 60
                 + Double.parseDouble(clock.currentTime().substring(6,8)) / (60 * 60);
-        caloriesBurned = calculateCalories(age, weight, isMale, (int)aBPM, time);
+        caloriesBurned = calculateCalories(userData.getAge(), userData.getWeight(), userData.getSex(), (int)aBPM, time - stoptime);
         return caloriesBurned;
     }
 
