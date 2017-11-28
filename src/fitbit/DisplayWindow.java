@@ -64,9 +64,9 @@ class DisplayWindow implements ActionListener {
         caloriesBurned = new JLabel("Calories Burned", SwingConstants.CENTER);
 
         //fonts
-        time.setFont(new Font("Comic Sans", Font.PLAIN, 34));
-        date.setFont(new Font("Comic Sans", Font.PLAIN, 34));
-        heartrate.setFont(new Font("Comic Sans", Font.PLAIN, 34));
+        time.setFont(new Font("Comic Sans", Font.PLAIN, 60));
+        date.setFont(new Font("Comic Sans", Font.PLAIN, 60));
+        heartrate.setFont(new Font("Comic Sans", Font.PLAIN, 60));
         steps.setFont(new Font("Comic Sans", Font.PLAIN, 34));
         activity.setFont(new Font("Comic Sans", Font.PLAIN, 34));
         caloriesBurned.setFont(new Font("Comic Sans", Font.PLAIN, 34));
@@ -160,9 +160,9 @@ class DisplayWindow implements ActionListener {
     private void getData(){
         time.setText(dataExpert.getTime());
         date.setText(dataExpert.getDate());
-        heartrate.setText("Heartrate: " + dataExpert.getHeartrate());
+        heartrate.setText("BPM: " + dataExpert.getHeartrate());
         steps.setText("Steps: " + dataExpert.getSteps());
-        activity.setText("Goal %: " + dataExpert.getActivity());//.substring(0, 4));
+        activity.setText("Goal %: " + dataExpert.getActivity());
         caloriesBurned.setText("Calories: " + dataExpert.getCalories());
     }
 
