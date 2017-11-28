@@ -7,14 +7,13 @@ package fitbit;
  * PURPOSE: HEARTRATE, ACTIVITY, CALORIES
  * OTHER:
  *      1) PULLS NEEDED INFORMATION FROM StepsHeartrate, Clock, and UserData
- *      2) CALCULATES HEARTRATE, ACTIVITY RATIO, AND CALORIES BURNED
- *      3) SENDS VALUES TO HACData
+ *      2) Calculates ACTIVITY RATIO, AND CALORIES BURNED
  */
 
 public class ActivityCalories {
 
     private double caloriesBurned = 0;
-    //private float activity = 0;
+    private float activity = 0;
     float aBPM = 0;
     int i = 0;
 
@@ -35,20 +34,19 @@ public class ActivityCalories {
         }
     }
 
-    //Updates the calories burned based on User Data, the time spent active and the average heart rate over that time
-    private void updateCal(UserData userData, float time){
-        StepsHeartrate stepsHeartrate = new StepsHeartrate();
-        int age = userData.getAge();
-        float weight = userData.getWeight();
-        boolean isMale = userData.getSex();
-        caloriesBurned = calculateCalories(age, weight, isMale, stepsHeartrate.getBPM(), time);
+    //Gets calories from ActivityCalories and updates it at the same time
+    public double getCalories(){
+        int age = 25;
+        int weight = 155;
+        boolean isMale = true;
+        double time = 10000.0;
+        caloriesBurned = calculateCalories(age, weight, isMale, (int)aBPM, time);
+        return caloriesBurned;
     }
 
-    //Gets calories from ActivityCalories and updates it at the same time
-    public double getCalories() {
-        //Create new settings expert which finds UserData. This allows UserData to be decoupled (CANT THINK OF SOLUTION YET!!!)
-        UserData U1 = new UserData();
-        //updateCal(U1, time);
-        return caloriesBurned;
+    public float getActivity(){
+        if (Sensors.BPSCheat() > 60)
+            activity += .25;
+        return activity;
     }
 }
