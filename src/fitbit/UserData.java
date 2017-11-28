@@ -12,36 +12,27 @@ package fitbit;
 public class UserData {
     private int age;
     private int weight;
-    private int height;
-    private char sex;
+    private boolean isMale;
 
 
     public UserData(){
         age = 0;
         weight = 0;
-        height = 0;
-        sex = 'n';
+        isMale = true;
     }
-    public UserData(int age, int weight, int height, char sex){
-        this.sex = sex;
+    public UserData(int age, int weight, boolean isMale){
+        this.isMale = isMale;
         this.weight= weight;
-        this.height = height;
         this.age = age;
     }
 
     public boolean isEmpty(){
-        if (age == 0 && weight ==0 && height == 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return (age == 0 || weight ==0);
     }
 
-    public void setUserData(int a, int w, int h, char s){
+    public void setUserData(int a, int w, int h, boolean s){
         setAge(a);
         setWeight(w);
-        setHeight(h);
         setSex(s);
     }
 
@@ -55,15 +46,11 @@ public class UserData {
         this.weight = weight;
     }
 
-    public void setHeight(int height){
-        this.height = height;
+    public void setSex(boolean sex){
+        this.isMale = sex;
     }
 
-    public void setSex(char sex){
-        this.sex = sex;
-    }
-
-    public char getSex(){return sex;}
+    public boolean getSex(){return isMale;}
 
     public int getAge(){
         return age;
@@ -71,9 +58,5 @@ public class UserData {
 
     public float getWeight(){
         return weight;
-    }
-
-    public float getHeight(){
-        return height;
     }
 }

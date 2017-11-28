@@ -21,7 +21,7 @@ public class StepsHeartrate {
         bps = new int [5];
         for(int i = 0; i < 5; i++) {
             bps[i] = Sensors.BPSCheat();
-            sum = sum + bps[i];
+            sum += bps[i];
         }
         BPM = sum/5;
     }

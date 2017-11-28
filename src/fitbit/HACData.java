@@ -28,7 +28,7 @@ public class HACData {
 
     //Sets heartRate by calling ActivityCalories
     private void setActivity(ActivityCalories Act){
-        activity = Act.getActivity();
+        //activity = Act.getActivity();
     }
 
     //Sets caloriesBurned in HACData by creating an instance of ActivityCalories and passing the necessary params

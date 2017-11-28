@@ -25,7 +25,7 @@ public class Controller {
     }
 
     public String getHeartrate(){
-        return Integer.toString(this.hacData.getHeartRate());
+        return Integer.toString(this.stepsHeartrate.getBPM());
     }
 
     public String getSteps(){
