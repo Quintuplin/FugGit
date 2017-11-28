@@ -15,6 +15,7 @@ public class Controller {
     private Clock clock = new Clock();
     private StepsHeartrate stepsHeartrate =  new StepsHeartrate();
     private HACData hacData = new HACData();
+    private UserData userData = new UserData();
 
     public String getTime(){
         return this.clock.currentTime();
@@ -38,5 +39,9 @@ public class Controller {
 
     public String getCalories(){
         return Double.toString(this.hacData.getCalories());
+    }
+
+    public void setUserData(int age, int weight, boolean sex){
+        userData.setUserData(age, weight, sex);
     }
 }

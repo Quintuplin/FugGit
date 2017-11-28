@@ -10,16 +10,17 @@ package fitbit;
  */
 
 public class UserData {
-    private int age;
-    private int weight;
-    private boolean isMale;
+    private int age = 0;
+    private int weight = 0;
+    private boolean isMale = false;
 
 
     public UserData(){
         age = 0;
         weight = 0;
-        isMale = true;
+        isMale = false;
     }
+
     public UserData(int age, int weight, boolean isMale){
         this.isMale = isMale;
         this.weight= weight;
@@ -27,29 +28,17 @@ public class UserData {
     }
 
     public boolean isEmpty(){
-        return (age == 0 || weight ==0);
+        return (age == 0 || weight == 0);
     }
 
-    public void setUserData(int a, int w, int h, boolean s){
-        setAge(a);
-        setWeight(w);
-        setSex(s);
-    }
-
-
-
-    public void setAge(int age){
+    //setter
+    public void setUserData(int age, int weight, boolean sex){
         this.age = age;
-    }
-
-    public void setWeight(int weight){
         this.weight = weight;
-    }
-
-    public void setSex(boolean sex){
         this.isMale = sex;
     }
 
+    //getters
     public boolean getSex(){return isMale;}
 
     public int getAge(){

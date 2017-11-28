@@ -10,6 +10,10 @@ import java.util.concurrent.TimeUnit;
 
 class DisplayWindow implements ActionListener {
 
+    private int age; //Get age from UI
+    private int weight; //Get weight from UI
+    private boolean sex; //Get sex from UI
+
     private JPanel displayPanel;
     private JLabel time, date, heartrate, steps, activity, caloriesBurned;
     private JButton sideButton;
@@ -122,6 +126,18 @@ class DisplayWindow implements ActionListener {
     private void update(){
         final Runnable updoot = new Runnable() {public void run() { getData(); }};
         final ScheduledFuture<?> updootHandle = scheduler.scheduleAtFixedRate(updoot, 250, 250, TimeUnit.MILLISECONDS);
+    }
+
+    //get data
+    private void getUserData() {
+        age = 25; //Get age from UI
+        weight = 155; //Get weight from UI
+        sex = true; //Get sex from UI
+    }
+
+    //set data
+    public void setUserData(){
+        controller.setUserData(age, weight, sex);
     }
 
     //get data
