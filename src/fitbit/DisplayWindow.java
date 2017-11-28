@@ -17,8 +17,10 @@ class DisplayWindow implements ActionListener {
     private JButton senseStep;
     private JButton senseBeat;
 
+    //one instance of everything, kept here
     private Controller controller = new Controller();
 
+    //constant updates
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
     private DisplayWindow() {
@@ -33,9 +35,6 @@ class DisplayWindow implements ActionListener {
         //add widgets
         addWidgets();
 
-        //set default button?
-        displayFrame.getRootPane().setDefaultButton(frontButton);
-
         //add panel to window
         displayFrame.getContentPane().add(displayPanel, BorderLayout.CENTER);
 
@@ -46,12 +45,12 @@ class DisplayWindow implements ActionListener {
 
     private void addWidgets() {
         //labels
-        time = new JLabel("Time", SwingConstants.LEFT);
-        date = new JLabel("Date", SwingConstants.LEFT);
-        heartrate = new JLabel("Heart Rate", SwingConstants.LEFT);
-        steps = new JLabel("Steps", SwingConstants.LEFT);
-        activity = new JLabel("Activity", SwingConstants.LEFT);
-        caloriesBurned = new JLabel("Calories Burned", SwingConstants.LEFT);
+        time = new JLabel("Time", SwingConstants.CENTER);
+        date = new JLabel("Date", SwingConstants.CENTER);
+        heartrate = new JLabel("Heart Rate", SwingConstants.CENTER);
+        steps = new JLabel("Steps", SwingConstants.CENTER);
+        activity = new JLabel("Activity", SwingConstants.CENTER);
+        caloriesBurned = new JLabel("Calories Burned", SwingConstants.CENTER);
 
         //buttons
         sideButton = new JButton("Side Button (left arrow)");
@@ -119,30 +118,28 @@ class DisplayWindow implements ActionListener {
         }
     }
 
-    private void getData(){
-        time.setText(controller.getTime());
+    //updates
+    private void update(){
+        final Runnable updoot = new Runnable() {public void run() { getData(); }};
+        final ScheduledFuture<?> updootHandle = scheduler.scheduleAtFixedRate(updoot, 250, 250, TimeUnit.MILLISECONDS);
     }
 
+    //get data
+    private void getData(){
+        time.setText("Time: " +controller.getTime());
+        date.setText("Date: " +controller.getDate());
+        heartrate.setText("Heartrate: " +controller.getHeartrate());
+        steps.setText("Steps: " +controller.getSteps());
+        activity.setText("Active %: " +controller.getActivity());
+        caloriesBurned.setText("Calories Burned: " +controller.getCalories());
+    }
+
+    //create and display window
     private static void showGUI() {
         JFrame.setDefaultLookAndFeelDecorated(true);
         DisplayWindow window = new DisplayWindow();
     }
-
     public static void runUI() {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                showGUI();
-            }
-        });
-    }
-
-    private void update(){
-        final Runnable updoot = new Runnable() {
-            @Override
-            public void run() {
-                getData();
-            }
-        };
-        final ScheduledFuture<?> updootHandle = scheduler.scheduleAtFixedRate(updoot, 250, 250, TimeUnit.MILLISECONDS);
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {public void run() { showGUI(); }});
     }
 }
