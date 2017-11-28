@@ -162,7 +162,7 @@ class DisplayWindow implements ActionListener {
         date.setText(dataExpert.getDate());
         heartrate.setText("Heartrate: " + dataExpert.getHeartrate());
         steps.setText("Steps: " + dataExpert.getSteps());
-        activity.setText("Goal %: " + dataExpert.getActivity().substring(0, 4));
+        activity.setText("Goal %: " + dataExpert.getActivity());//.substring(0, 4));
         caloriesBurned.setText("Calories: " + dataExpert.getCalories());
     }
 
