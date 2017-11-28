@@ -8,6 +8,13 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * DisplayWindow.java
+ * Team Hungry
+ * CSCI 360-01
+ * Ugly (functional) UI
+ */
+
 class DisplayWindow implements ActionListener {
 
     private int age;

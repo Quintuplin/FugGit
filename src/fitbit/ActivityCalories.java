@@ -2,12 +2,9 @@ package fitbit;
 
 /**
  * ActivityCalories.java
- * AUTHOR: TEAM HUNGRY
- * CLASS: CSCI 360-01
- * PURPOSE: HEARTRATE, ACTIVITY, CALORIES
- * OTHER:
- *      1) PULLS NEEDED INFORMATION FROM StepsHeartrate, Clock, and UserData
- *      2) Calculates ACTIVITY RATIO, AND CALORIES BURNED
+ * Team Hungry
+ * CSCI 360-01
+ * Calculates Activity Ratio and Calories Burned
  */
 
 public class ActivityCalories {

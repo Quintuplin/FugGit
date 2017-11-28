@@ -1,11 +1,10 @@
 package fitbit;
 
-
 /**
  * DataExpert.java
- * AUTHOR: TEAM HUNGRY
- * CLASS: CSCI 360-01
- * PURPOSE: Initializes everything and is a data passthrough for UI layer (DisplayWindow)
+ * Team Hungry
+ * CSCI 360-01
+ * Initializes everything and is a data passthrough for UI layer (DisplayWindow)
  */
 
 public class DataExpert {
@@ -35,12 +34,10 @@ public class DataExpert {
     }
 
     public String getActivity(){
-        return "";//Float.toString(this.activityCalories.getActivity());
+        return Float.toString(this.activityCalories.getActivity());
     }
 
     public String getCalories(){
         return Double.toString(this.activityCalories.getCalories());
     }
-
-
 }

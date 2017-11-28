@@ -6,9 +6,9 @@ import java.text.SimpleDateFormat;
 
 /**
  * Clock.java
- * AUTHOR: TEAM HUNGRY
- * CLASS: CSCI 360-01
- * PURPOSE: Calculates date and time
+ * Team Hungry
+ * CSCI 360-01
+ * Calculates date and time
  */
 
 class Clock {

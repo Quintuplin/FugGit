@@ -2,9 +2,9 @@ package fitbit;
 
 /**
  * StepsHeartrate.java
- * AUTHOR: TEAM HUNGRY
- * CLASS: CSCI 360-01
- * PURPOSE: STORES STEP AND BPS DATA
+ * TEAM HUNGRY
+ * CSCI 360-01
+ * Tracks steps and BPM based on Sensor data
  */
 
 public class StepsHeartrate {
