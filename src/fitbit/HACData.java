@@ -17,6 +17,9 @@ public class HACData {
     private double caloriesBurned;
     private float activity;
 
+    HACData hacData = new HACData();
+    HAC hac = new HAC();
+
     public HACData(){
         heartRate = 0;
         caloriesBurned = 0;
@@ -31,7 +34,7 @@ public class HACData {
     //Sets caloriesBurned in HACData by creating an instance of HAC and passing the necessary params
     private void setCaloriesBurned(UserData u1, float time){
         HAC cal = new HAC();
-        caloriesBurned = caloriesBurned + cal.getCalories(u1, time);
+        //caloriesBurned = caloriesBurned + cal.getCalories(u1, time);
     }
 
     public float getActivity() {
@@ -40,15 +43,18 @@ public class HACData {
 
     //Pulls the heartRate and updates it at the same time
     public int getHeartRate() {
-        HAC HAC1 = new HAC();
-        heartRate = HAC1.setHACDataHeartRate();
-        return heartRate;
+       // HAC HAC1 = new HAC();
+        //heartRate = HAC1.setHACDataHeartRate();
+        //HAC.setHeartRate();
+        return this.heartRate;
     }
 
     //Gets the calories burned but updates it first before calling it
-    public double getCaloriesBurned(UserData u1, float time) {
-        setCaloriesBurned(u1, time);
-        return caloriesBurned;
+    public double getCalories(){//UserData u1, float time) {
+        //setCaloriesBurned(u1, time);
+        this.caloriesBurned = hac.getCalories();
+
+        return this.caloriesBurned;
     }
 }
 

@@ -18,10 +18,12 @@ package fitbit;
 
 public class DataExpert {
 
+
     //Gets calories burned from HACData, Needs HACData, UserData and BPSData as params,
-    public double getCaloriesBurned(HACData HAC1, UserData u1, Float time){
-        double calories = HAC1.getCaloriesBurned(u1, time);
-        return calories;
+    public double getCaloriesBurned(){//HACData HAC1, UserData u1, Float time){
+        //double calories = HAC1.getCaloriesBurned(u1, time);
+        //return HACData.getCalories();
+        return 0.0;
     }
 
     //Gets steps from StepBPS
@@ -31,7 +33,7 @@ public class DataExpert {
     }
 
     //Gets H
-    public int getHearRate(HACData HAC1){
+    public int getHeartRate(HACData HAC1){
         int BPS = HAC1.getHeartRate();
         return BPS;
     }

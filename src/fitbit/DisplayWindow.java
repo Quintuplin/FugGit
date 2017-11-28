@@ -37,9 +37,7 @@ public class DisplayWindow implements ActionListener{
         displayFrame.setVisible(true);
     }
 
-
     private void addWidgets(){
-
         //labels
         time = new JLabel("Time", SwingConstants.LEFT);
         date = new JLabel("Date", SwingConstants.LEFT);
@@ -74,6 +72,7 @@ public class DisplayWindow implements ActionListener{
         displayPanel.add(activity);
         displayPanel.add(caloriesBurned);
 
+        //hide the things that should be hidden
         date.setVisible(false);
         heartrate.setVisible(false);
         activity.setVisible(false);
@@ -101,23 +100,22 @@ public class DisplayWindow implements ActionListener{
                 time.setVisible(!time.isVisible());
                 steps.setVisible(!steps.isVisible());
             }
-        }
-
-
-        else if(event.getSource() == frontButton) {
+        }else if(event.getSource() == frontButton) {
             System.out.println("FRONT BUTTON PRESSED");
-        }
-        else if(event.getSource() == senseBeat) {
+        }else if(event.getSource() == senseBeat) {
             System.out.println("BEAT DETECTED");
-        }
-        else if(event.getSource() == senseStep) {
+        }else if(event.getSource() == senseStep) {
             System.out.println("STEP DETECTED");
         }
     }
 
+    public void getData(DataExpert data){
+        data.getCaloriesBurned();
+        time.setText("holla");
+    }
+
     private static void showGUI(){
         JFrame.setDefaultLookAndFeelDecorated(true);
-
         DisplayWindow window = new DisplayWindow();
     }
 
@@ -129,6 +127,8 @@ public class DisplayWindow implements ActionListener{
         });
     }
 }
+
+
 //FROM FORMER DISPLAY UI
 //
 // if (userDataController1.buttonListen() == false) {

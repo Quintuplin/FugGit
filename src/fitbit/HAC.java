@@ -69,9 +69,11 @@ public class HAC {
         return heartRate;
     }
     //Gets calories from HAC and updates it at the same time
-    public double getCalories(UserData u1, float time) {
+    public double getCalories(){//UserData u1, float time) {
         //Create new settings expert which finds UserData. This allows UserData to be decoupled (CANT THINK OF SOLUTION YET!!!)
-        updateCal(u1, time);
+        UserData U1 = new UserData();
+
+        //updateCal(U1, //time);
         return caloriesBurned;
     }
 
