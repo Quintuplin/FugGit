@@ -38,10 +38,10 @@ class DisplayWindow implements ActionListener {
         //create window
         JFrame displayFrame = new JFrame("FITBIT DEMO");
         displayFrame.setDefaultCloseOperation((JFrame.EXIT_ON_CLOSE));
-        displayFrame.setSize(new Dimension(600, 600));
+        displayFrame.setSize(new Dimension(400, 600));
 
         //create and set up panel
-        displayPanel = new JPanel(new GridLayout(10, 10));
+        displayPanel = new JPanel(new GridLayout(8, 1));
 
         //add widgets
         addWidgets();
@@ -50,7 +50,7 @@ class DisplayWindow implements ActionListener {
         displayFrame.getContentPane().add(displayPanel, BorderLayout.CENTER);
 
         //display the window
-        displayFrame.pack();
+        //displayFrame.pack();
         displayFrame.setVisible(true);
     }
 
@@ -87,7 +87,7 @@ class DisplayWindow implements ActionListener {
 
         //pop it all to the container
         displayPanel.add(sideButton);
-        //displayPanel.add(frontButton);
+        displayPanel.add(frontButton);
         //displayPanel.add(senseStep);
         //displayPanel.add(senseBeat);
         displayPanel.add(time);
@@ -164,6 +164,8 @@ class DisplayWindow implements ActionListener {
         steps.setText("Steps: " + dataExpert.getSteps());
         activity.setText("Goal %: " + String.format("%.2f", Double.parseDouble(dataExpert.getActivity())));
         caloriesBurned.setText("Calories: " + String.format("%.2f", Double.parseDouble(dataExpert.getCalories())));
+        getUserData();
+        setUserData();
     }
 
     //create and display window
