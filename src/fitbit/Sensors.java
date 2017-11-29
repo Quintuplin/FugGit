@@ -19,6 +19,6 @@ public class Sensors {
     //returns BPS data
     public static int BPSCheat(){
         Random rand = new Random();
-        return rand.nextInt(50)+80;
+        return rand.nextInt(5)+148;
     }
 }

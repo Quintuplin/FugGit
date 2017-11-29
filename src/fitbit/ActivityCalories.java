@@ -22,13 +22,13 @@ public class ActivityCalories {
 
     //Calculates the amount of calories burned in current day
     private double calculateCalories(int age, double weight, boolean isMale, float BPM, double time){
-        System.out.println(BPM);
+        System.out.println(time);
         if (isMale){
             double V02Max = ((-55.0969 + (.6309 * BPM) + (.1988 * weight) + (.2017 * age)) / 4.184) * 60 * time;
-            return ((-95.7735 + (.634 * BPM) + (.404 * V02Max) + (.394 * weight) + (.271 * age)) / 4.184) * 60 * time;
+            return -((-95.7735 + (.634 * BPM) + (.404 * V02Max) + (.394 * weight) + (.271 * age)) / 4.184) * 60 * time;
         } else{ //if female
             double V02Max = ((-20.4022 + (.4472 * BPM) + (.1263 * weight) + (.074 * age)) / 4.184) * 60 * time;
-            return ((-59.3954 + (.45 * BPM) + (.380 * V02Max) + (.103 * weight) + (.274 * age)) / 4.184) * 60 * time;
+            return -((-59.3954 + (.45 * BPM) + (.380 * V02Max) + (.103 * weight) + (.274 * age)) / 4.184) * 60 * time;
         }
     }
 
@@ -40,6 +40,7 @@ public class ActivityCalories {
         return calculateCalories(userData.getAge(), userData.getWeight(), userData.getSex(), averageBPM(stepsHeartRate), time - stoptime);
     }
 
+    //if BPM is over 100 add to activity and return activity
     public float getActivity(){
         if (Sensors.BPSCheat() > 100)
             if (activity < 99.95) {
