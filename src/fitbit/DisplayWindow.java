@@ -25,8 +25,7 @@ class DisplayWindow implements ActionListener {
     private JLabel time, date, heartrate, steps, activity, caloriesBurned;
     private JButton sideButton;
     private JButton frontButton;
-    private JButton senseStep;
-    private JButton senseBeat;
+    private JButton editButton;
 
     //one instance of everything, kept here
     private DataExpert dataExpert = new DataExpert();
@@ -38,10 +37,11 @@ class DisplayWindow implements ActionListener {
         //create window
         JFrame displayFrame = new JFrame("FITBIT DEMO");
         displayFrame.setDefaultCloseOperation((JFrame.EXIT_ON_CLOSE));
-        displayFrame.setSize(new Dimension(400, 600));
+        displayFrame.setLocation(250, 250);
+        displayFrame.setSize(300, 400);
 
         //create and set up panel
-        displayPanel = new JPanel(new GridLayout(8, 1));
+        displayPanel = new JPanel();
 
         //add widgets
         addWidgets();
@@ -50,7 +50,6 @@ class DisplayWindow implements ActionListener {
         displayFrame.getContentPane().add(displayPanel, BorderLayout.CENTER);
 
         //display the window
-        //displayFrame.pack();
         displayFrame.setVisible(true);
     }
 
@@ -74,22 +73,18 @@ class DisplayWindow implements ActionListener {
         //buttons
         sideButton = new JButton("Side Button (left arrow)");
         frontButton = new JButton("Front Button (right arrow)");
-        senseStep = new JButton("Sense Step (V key)");
-        senseBeat = new JButton("Sense Beat (B key)");
+        editButton = new JButton("Edit Button (V key)");
         sideButton.setMnemonic(KeyEvent.VK_LEFT);
         sideButton.addActionListener(this);
         frontButton.setMnemonic(KeyEvent.VK_RIGHT);
         frontButton.addActionListener(this);
-        senseStep.setMnemonic(KeyEvent.VK_V);
-        senseStep.addActionListener(this);
-        senseBeat.setMnemonic(KeyEvent.VK_B);
-        senseBeat.addActionListener(this);
+        editButton.setMnemonic(KeyEvent.VK_V);
+        editButton.addActionListener(this);
 
         //pop it all to the container
         displayPanel.add(sideButton);
         displayPanel.add(frontButton);
-        //displayPanel.add(senseStep);
-        //displayPanel.add(senseBeat);
+        displayPanel.add(editButton);
         displayPanel.add(time);
         displayPanel.add(date);
         displayPanel.add(heartrate);
@@ -130,10 +125,8 @@ class DisplayWindow implements ActionListener {
             }
         } else if (event.getSource() == frontButton) {
             System.out.println("FRONT BUTTON PRESSED");
-        } else if (event.getSource() == senseBeat) {
-            System.out.println("BEAT DETECTED");
-        } else if (event.getSource() == senseStep) {
-            System.out.println("STEP DETECTED");
+        } else if (event.getSource() == editButton) {
+            System.out.println("EDIT BUTTON PRESSED");
         }
     }
 
