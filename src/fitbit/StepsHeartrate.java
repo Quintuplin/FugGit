@@ -11,7 +11,10 @@ public class StepsHeartrate {
     private int steps = 0;
     private int BPM = 0;
 
-    //setters
+    //updates BPM based on the past 5 BPS values
+    //relies on BPS to not really be PS but instead P5S
+    //might be a little unrealistic but it's based off of the sensors model which itself is a little unrealistic
+    //and it generates just fine data
     private void setBPM(){
         int sum = 0;
         int bps[];
@@ -23,11 +26,10 @@ public class StepsHeartrate {
         BPM = sum/5;
     }
 
-    private void setSteps(){
-        steps += Sensors.stepCheat();
-    }
+    //adds steps as sensors detect them
+    private void setSteps(){ steps += Sensors.stepCheat(); }
 
-    //getters
+    //getters send data onwards after updating their values
     public int getBPM() {
         setBPM();
         return BPM;
@@ -38,8 +40,6 @@ public class StepsHeartrate {
         return steps;
     }
 
-    //Resets steps to 0 at midnight
-    public void reset(){
-        steps = 0;
-    }
+    //Resets steps to 0 as requested to by DataExpert
+    public void reset(){ steps = 0; }
 }

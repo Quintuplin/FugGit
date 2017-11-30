@@ -10,7 +10,7 @@ import java.util.Random;
  */
 
 public class Sensors {
-    //without real sensors, we went with simply generating data to pour into our other classes
+    //without real sensors, we went with simply generating junk data to pour into our other classes
 
     //returns step data
     public static int stepCheat(){
@@ -24,6 +24,6 @@ public class Sensors {
         Random rand = new Random();
         //large randomization is less realistic but more capably shows off the flexibility of ActivityCalories' calculations.
         //alternatively, small randomization is more realistic, but shows off less
-        return rand.nextInt(100)+50;
+        return rand.nextInt(80)+50;
     }
 }

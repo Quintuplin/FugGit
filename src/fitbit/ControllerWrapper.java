@@ -7,6 +7,9 @@ package fitbit;
  * Offers a clean run
  */
 
+//this is a wrapper, probably
+//only runnable in the entire project
+//nice and clean
 public class ControllerWrapper {
     public static void main(String[] args) {
         DisplayWindow.runUI();
