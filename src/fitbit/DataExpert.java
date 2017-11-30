@@ -8,7 +8,7 @@ package fitbit;
  */
 
 public class DataExpert {
-    //data expert acts partially as a creator and partially as a controller, but primarily as an expert
+    //data expert acts partially as a creator, but primarily as an expert
     //as a creator, data expert generates an instance of every subclass which will ever be needed, and keeps track of them
     private Clock clock = new Clock();
     private StepsHeartrate stepsHeartrate =  new StepsHeartrate();
