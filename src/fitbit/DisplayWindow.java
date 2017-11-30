@@ -95,7 +95,7 @@ class DisplayWindow implements ActionListener {
         caloriesBurned.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
         editScreen.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
         editToolbar.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
-        alarmPopup.setFont(new Font("Comic Sans MS", Font.PLAIN, 44));
+        alarmPopup.setFont(new Font("Comic Sans MS", Font.PLAIN, 60));
 
         //buttons for to simulate a watch face with
         sideButton = new JButton("Menu Button");
@@ -338,7 +338,7 @@ class DisplayWindow implements ActionListener {
     private void setAlarm(){
         dataExpert.setAlarm(alarm*10/60 + ":" +alarm*10%60/10 +"0:00");
         //commented out hardcode used to test alarm going off at extremely specific/convenient times without having to set within clock
-        //dataExpert.setAlarm("12:35:30");
+        //dataExpert.setAlarm("15:37:51");
     }
 
     //check alarm
