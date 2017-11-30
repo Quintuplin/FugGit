@@ -33,7 +33,6 @@ public class ActivityCalories {
 
     //Gets calories from ActivityCalories and updates it at the same time
     public double getCalories(UserData userData, Clock clock, StepsHeartrate stepsHeartRate, double stoptime){
-        //System.out.println(userData.getAge());
         double time = Double.parseDouble(clock.currentTime().substring(0,2))
                 + Double.parseDouble(clock.currentTime().substring(3,5)) / 60
                 + Double.parseDouble(clock.currentTime().substring(6,8)) / (60 * 60);
