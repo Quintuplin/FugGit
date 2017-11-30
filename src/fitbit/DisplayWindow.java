@@ -141,6 +141,7 @@ class DisplayWindow implements ActionListener {
             if (event.getSource() == sideButton) {
                 System.out.println("SIDE BUTTON PRESSED");
 
+                //hides everything you shouldn't see, dynamically
                 if (time.isVisible()) {
                     time.setVisible(!time.isVisible());
                     steps.setVisible(!steps.isVisible());
