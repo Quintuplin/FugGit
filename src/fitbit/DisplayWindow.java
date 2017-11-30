@@ -17,10 +17,11 @@ import java.util.concurrent.TimeUnit;
 
 class DisplayWindow implements ActionListener {
 
-    private int age;
-    private int weight;
-    private boolean sex;
+    private int age = 0;
+    private int weight = 0;
+    private boolean sex = true;
     private boolean mode = true;
+    private int subscreen = 0;
 
     private JPanel displayPanel;
     private JLabel time, date, heartrate, steps, activity, caloriesBurned, editScreen, editToolbar;
@@ -62,7 +63,7 @@ class DisplayWindow implements ActionListener {
         steps = new JLabel("Steps", SwingConstants.CENTER);
         activity = new JLabel("Activity", SwingConstants.CENTER);
         caloriesBurned = new JLabel("Calories Burned", SwingConstants.CENTER);
-        editScreen = new JLabel("Input Settings", SwingConstants.CENTER);
+        editScreen = new JLabel("Settings Mode", SwingConstants.CENTER);
         editToolbar = new JLabel(" ", SwingConstants.CENTER);
 
         //fonts
@@ -72,13 +73,13 @@ class DisplayWindow implements ActionListener {
         steps.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
         activity.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
         caloriesBurned.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
-        editScreen.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
+        editScreen.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
         editToolbar.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
 
         //buttons
-        sideButton = new JButton("Side Button (left arrow)");
-        frontButton = new JButton("Front Button (right arrow)");
-        editButton = new JButton("Edit Button (V key)");
+        sideButton = new JButton("Menu Button");
+        frontButton = new JButton("Submenu Button");
+        editButton = new JButton("Edit Button");
         sideButton.setMnemonic(KeyEvent.VK_LEFT);
         sideButton.addActionListener(this);
         frontButton.setMnemonic(KeyEvent.VK_RIGHT);
@@ -131,6 +132,8 @@ class DisplayWindow implements ActionListener {
             }
             mode = !mode;
         }
+
+        //main menu
         if (mode) {
             if (event.getSource() == sideButton) {
                 System.out.println("SIDE BUTTON PRESSED");
@@ -156,41 +159,81 @@ class DisplayWindow implements ActionListener {
             } else if (event.getSource() == editButton) {
                 System.out.println("EDIT BUTTON PRESSED");
             }
-        }else if (!mode){
 
+        //edit menu
+        }else{
+            if (event.getSource() == sideButton){
+                System.out.println("EDIT SIDE BUTTON PRESSED");
+                subscreen = (subscreen + 1) % 4;
+                System.out.println(subscreen);
+                if(subscreen == 0){
+                    editScreen.setText(" Settings Mode ");
+                }else if(subscreen == 1){
+                    editScreen.setText("  Enter Sex:    ");
+                }else if(subscreen == 2){
+                    editScreen.setText("  Enter Weight: ");
+                }else if(subscreen == 3){
+                    editScreen.setText("  Enter Age:    ");
+                }
+            } else if (event.getSource() == frontButton){
+                System.out.println(subscreen);
+                System.out.println("EDIT FRONT BUTTON PRESSED");
+                if(subscreen == 1){
+                    System.out.println("CHANGE SEX");
+                    sex = !sex;
+                }else if(subscreen == 2){
+                    System.out.println("CHANGE WEIGHT");
+                    weight = ((weight + 10) % 210);
+                }else if(subscreen == 3){
+                    System.out.println("CHANGE AGE");
+                    age = (age + 5) % 75;
+                }
+            }
         }
     }
 
     //updates
     private void update(){
-        final Runnable updoot = new Runnable() {public void run() { getData(); }};
+        final Runnable updoot = new Runnable() {public void run() { updateEverything(); }};
         final ScheduledFuture<?> updootHandle = scheduler.scheduleAtFixedRate(updoot, 100, 100, TimeUnit.MILLISECONDS);
     }
 
     //get data
-    //@todo hardcoded for now
-    private void getUserData() {
-        age = 25;
-        weight = 155;
-        sex = true;
+    private void updateEverything(){
+        updootSettings();
+        updootData();
+        updootTime();
     }
 
-    //set data
-    public void setUserData(){
-        dataExpert.setUserData(age, weight, sex);
-    }
-
-    //get data
-    private void getData(){
+    //updoot time
+    private void updootTime(){
         time.setText(dataExpert.getTime());
         date.setText(dataExpert.getDate());
         heartrate.setText("BPM: " + dataExpert.getHeartrate());
         steps.setText("Steps: " + dataExpert.getSteps());
         activity.setText("Goal %: " + String.format("%.2f", Double.parseDouble(dataExpert.getActivity())));
         caloriesBurned.setText("Calories: " + String.format("%.2f", Double.parseDouble(dataExpert.getCalories())));
-        getUserData();
-        setUserData();
     }
+
+    //updoot settings
+    private void updootSettings(){
+        if(subscreen == 0){
+            editToolbar.setText(" ");
+        }else if(subscreen == 1){
+            if(sex) editToolbar.setText("M");
+            else editToolbar.setText("F");
+        }else if(subscreen == 2){
+            editToolbar.setText("" +(weight+100));
+        }else if(subscreen == 3){
+            editToolbar.setText("" +(age+5));
+        }
+    }
+
+    //updoot data
+    private void updootData(){
+        dataExpert.setUserData(age+5, weight+100, sex);
+    }
+
 
     //create and display window
     private static void showGUI() {

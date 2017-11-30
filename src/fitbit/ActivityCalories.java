@@ -22,7 +22,6 @@ public class ActivityCalories {
 
     //Calculates the amount of calories burned in current day
     private double calculateCalories(int age, double weight, boolean isMale, float BPM, double time){
-        System.out.println(time);
         if (isMale){
             double V02Max = ((-55.0969 + (.6309 * BPM) + (.1988 * weight) + (.2017 * age)) / 4.184) * 60 * time;
             return ((-95.7735 + (.634 * BPM) + (.404 * V02Max) + (.394 * weight) + (.271 * age)) / 4.184) * 60 * time;
@@ -34,7 +33,7 @@ public class ActivityCalories {
 
     //Gets calories from ActivityCalories and updates it at the same time
     public double getCalories(UserData userData, Clock clock, StepsHeartrate stepsHeartRate, double stoptime){
-        System.out.println(userData.getAge());
+        //System.out.println(userData.getAge());
         double time = Double.parseDouble(clock.currentTime().substring(0,2))
                 + Double.parseDouble(clock.currentTime().substring(3,5)) / 60
                 + Double.parseDouble(clock.currentTime().substring(6,8)) / (60 * 60);
