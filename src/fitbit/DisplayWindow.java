@@ -31,6 +31,7 @@ class DisplayWindow implements ActionListener {
     private int alarm = 12;
     private boolean alarmMode = false;
     private boolean alarmIsOn = false;
+    private boolean reset = false;
 
     private JPanel displayPanel;
     private JLabel time, date, heartrate, steps, activity, caloriesBurned, editScreen, editToolbar, alarmPopup;
@@ -100,8 +101,8 @@ class DisplayWindow implements ActionListener {
 
         //pop it all to the container
         displayPanel.add(sideButton);
-        displayPanel.add(frontButton);
         displayPanel.add(editButton);
+        displayPanel.add(frontButton);
         displayPanel.add(time);
         displayPanel.add(date);
         displayPanel.add(heartrate);
@@ -182,7 +183,7 @@ class DisplayWindow implements ActionListener {
         }else{
             if (event.getSource() == sideButton){
                 System.out.println("EDIT SIDE BUTTON PRESSED");
-                subscreen = (subscreen + 1) % 6; //3 for userdata, 2 for alarm, 1 for mode title
+                subscreen = (subscreen + 1) % 7; //1 for mode title, 3 for userdata, 2 for alarm, 1 for reset
                 System.out.println(subscreen);
                 if(subscreen == 0){
                     editScreen.setText(" Settings Mode  ");
@@ -196,6 +197,8 @@ class DisplayWindow implements ActionListener {
                     editScreen.setText("  Toggle Alarm: ");
                 }else if(subscreen == 5){
                     editScreen.setText("    Set Alarm:  ");
+                }else if(subscreen == 6){
+                    editScreen.setText("   RESET ALL?   ");
                 }
             } else if (event.getSource() == frontButton){
                 System.out.println(subscreen);
@@ -215,6 +218,9 @@ class DisplayWindow implements ActionListener {
                 }else if(subscreen == 5){
                     System.out.println("SET ALARM");
                     alarm = (alarm + 1) % 24;
+                }else if(subscreen == 6){
+                    System.out.println("RESET");
+                    reset = true;
                 }
             }
         }
@@ -223,7 +229,7 @@ class DisplayWindow implements ActionListener {
     //updates
     private void update(){
         final Runnable updoot = new Runnable() {public void run() { updateEverything(); }};
-        final ScheduledFuture<?> updootHandle = scheduler.scheduleAtFixedRate(updoot, 100, 100, TimeUnit.MILLISECONDS);
+        final ScheduledFuture<?> updootHandle = scheduler.scheduleAtFixedRate(updoot, 200, 200, TimeUnit.MILLISECONDS);
     }
 
     //get data
@@ -231,7 +237,6 @@ class DisplayWindow implements ActionListener {
         updootSettings();
         updootData();
         updootTime();
-        //if(checkAlarm()){}
     }
 
     //updoot time
@@ -242,6 +247,10 @@ class DisplayWindow implements ActionListener {
         steps.setText("Steps: " + dataExpert.getSteps());
         activity.setText("Goal %: " + String.format("%.2f", Double.parseDouble(dataExpert.getActivity())));
         caloriesBurned.setText("Calories: " + String.format("%.2f", Double.parseDouble(dataExpert.getCalories())));
+
+//        if(alarmIsOn && checkAlarm()){
+//            alarmMode = true;
+//        }
     }
 
     //updoot settings
@@ -261,12 +270,18 @@ class DisplayWindow implements ActionListener {
             }else editToolbar.setText("OFF");
         }else if(subscreen == 5){
             editToolbar.setText(alarm+1 + ":00:00");
+        }else if(subscreen == 6){
+            editToolbar.setText("RESET?");
         }
     }
 
     //updoot data
     private void updootData(){
         dataExpert.setUserData(age+5, weight+100, sex);
+        if(reset || time.getText().equals(("24:00:00"))){
+            reset = false;
+            dataExpert.reset();
+        }
     }
 
 
@@ -285,6 +300,8 @@ class DisplayWindow implements ActionListener {
         //JFrame.setDefaultLookAndFeelDecorated(true);
         DisplayWindow window = new DisplayWindow();
     }
+
+    //run UI
     public static void runUI() {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {public void run() { showGUI(); }});
     }
