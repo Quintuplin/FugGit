@@ -47,4 +47,11 @@ public class ActivityCalories {
             }else activity = 100;
         return activity;
     }
+
+    //Meant for when the time hits midnight and all values need to be reset
+    public void reset(){
+        activity = 0;
+        aBPM = 0;
+        //Cant currently think of a way to reset calories
+    }
 }

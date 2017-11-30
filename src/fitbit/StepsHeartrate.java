@@ -37,4 +37,9 @@ public class StepsHeartrate {
         setSteps();
         return steps;
     }
+
+    //Resets steps to 0 at midnight
+    public void reset(){
+        steps = 0;
+    }
 }
