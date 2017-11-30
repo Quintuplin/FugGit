@@ -22,7 +22,6 @@ import java.util.concurrent.TimeUnit;
 
 //todo make alarm iterate by 10 minutes
     //todo make alarm functional
-    
 class DisplayWindow implements ActionListener {
 
     //handy variables
@@ -89,7 +88,7 @@ class DisplayWindow implements ActionListener {
         caloriesBurned.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
         editScreen.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
         editToolbar.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
-        alarmPopup.setFont(new Font("Comic Sans MS", Font.PLAIN, 70));
+        alarmPopup.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
 
         //buttons
         sideButton = new JButton("Menu Button");
@@ -114,6 +113,7 @@ class DisplayWindow implements ActionListener {
         displayPanel.add(caloriesBurned);
         displayPanel.add(editScreen);
         displayPanel.add(editToolbar);
+        displayPanel.add(alarmPopup);
 
         //hide the things that should be hidden
         date.setVisible(false);
@@ -123,6 +123,7 @@ class DisplayWindow implements ActionListener {
         editScreen.setVisible(false);
         editToolbar.setVisible(false);
         frontButton.setVisible(false);
+        alarmPopup.setVisible(false);
 
         //start the updates
         this.update();
@@ -130,7 +131,13 @@ class DisplayWindow implements ActionListener {
 
     public void actionPerformed(ActionEvent event) {
         //end alarm
-        alarmMode = false;
+        if(alarmMode){
+            alarmMode = false;
+            mode = true;
+            time.setVisible(true);
+            steps.setVisible(true);
+            alarmPopup.setVisible(false);
+        }
 
         //change menu
         if (event.getSource() == editButton){
@@ -251,9 +258,20 @@ class DisplayWindow implements ActionListener {
         activity.setText("Goal %: " + String.format("%.2f", Double.parseDouble(dataExpert.getActivity())));
         caloriesBurned.setText("Calories: " + String.format("%.2f", Double.parseDouble(dataExpert.getCalories())));
 
-//        if(alarmIsOn && checkAlarm()){
-//            alarmMode = true;
-//        }
+        setAlarm();
+        if(alarmIsOn && checkAlarm()){
+            alarmMode = true;
+            time.setVisible(false);
+            date.setVisible(false);
+            heartrate.setVisible(false);
+            steps.setVisible(false);
+            activity.setVisible(false);
+            caloriesBurned.setVisible(false);
+            editScreen.setVisible(false);
+            editToolbar.setVisible(false);
+            frontButton.setVisible(false);
+            alarmPopup.setVisible(true);
+        }
     }
 
     //updoot settings
@@ -285,12 +303,19 @@ class DisplayWindow implements ActionListener {
             reset = false;
             dataExpert.reset();
         }
+
+        if(alarmMode){
+            //hide everything
+            //display alarm frame
+            //wait to exit
+        }
     }
 
 
     //setalarm
-    private void SetAlarm(){
-        dataExpert.setAlarm(alarm+1 + ":00:00");
+    private void setAlarm(){
+        //dataExpert.setAlarm(alarm+1 + ":00:00");
+        dataExpert.setAlarm("09:49:00");
     }
 
     //check alarm

@@ -56,8 +56,7 @@ class Clock {
         atime = alarm;
     }
 
-    public boolean getAlarm(){
-        if (atime.equals(currentTime())) return true;
-        else return false;
+    public boolean getAlarm() {
+        return (atime.equals(currentTime()));
     }
 }
