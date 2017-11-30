@@ -52,6 +52,7 @@ public class ActivityCalories {
     public void reset(){
         activity = 0;
         aBPM = 0;
+
         //Cant currently think of a way to reset calories
     }
 }

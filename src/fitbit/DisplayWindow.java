@@ -28,8 +28,9 @@ class DisplayWindow implements ActionListener {
     private boolean sex = true;
     private boolean mode = true;
     private int subscreen = 0;
-    private String alarm = "12:00:00";
+    private int alarm = 12;
     private boolean alarmMode = false;
+    private boolean alarmIsOn = false;
 
     private JPanel displayPanel;
     private JLabel time, date, heartrate, steps, activity, caloriesBurned, editScreen, editToolbar, alarmPopup;
@@ -181,16 +182,20 @@ class DisplayWindow implements ActionListener {
         }else{
             if (event.getSource() == sideButton){
                 System.out.println("EDIT SIDE BUTTON PRESSED");
-                subscreen = (subscreen + 1) % 4;
+                subscreen = (subscreen + 1) % 6; //3 for userdata, 2 for alarm, 1 for mode title
                 System.out.println(subscreen);
                 if(subscreen == 0){
-                    editScreen.setText(" Settings Mode ");
+                    editScreen.setText(" Settings Mode  ");
                 }else if(subscreen == 1){
                     editScreen.setText("    Enter Sex:  ");
                 }else if(subscreen == 2){
                     editScreen.setText("  Enter Weight: ");
                 }else if(subscreen == 3){
                     editScreen.setText("    Enter Age:  ");
+                }else if(subscreen == 4){
+                    editScreen.setText("  Toggle Alarm: ");
+                }else if(subscreen == 5){
+                    editScreen.setText("    Set Alarm:  ");
                 }
             } else if (event.getSource() == frontButton){
                 System.out.println(subscreen);
@@ -204,6 +209,12 @@ class DisplayWindow implements ActionListener {
                 }else if(subscreen == 3){
                     System.out.println("CHANGE AGE");
                     age = (age + 5) % 75;
+                }else if(subscreen == 4){
+                    System.out.println("TOGGLE ALARM");
+                    alarmIsOn = !alarmIsOn;
+                }else if(subscreen == 5){
+                    System.out.println("SET ALARM");
+                    alarm = (alarm + 1) % 24;
                 }
             }
         }
@@ -220,9 +231,7 @@ class DisplayWindow implements ActionListener {
         updootSettings();
         updootData();
         updootTime();
-//        if(checkAlarm()){
-//
-//        }
+        //if(checkAlarm()){}
     }
 
     //updoot time
@@ -246,6 +255,12 @@ class DisplayWindow implements ActionListener {
             editToolbar.setText("" +(weight+100));
         }else if(subscreen == 3){
             editToolbar.setText("" +(age+5));
+        }else if(subscreen == 4){
+            if (alarmIsOn) {
+                editToolbar.setText("ON");
+            }else editToolbar.setText("OFF");
+        }else if(subscreen == 5){
+            editToolbar.setText(alarm+1 + ":00:00");
         }
     }
 
@@ -257,7 +272,7 @@ class DisplayWindow implements ActionListener {
 
     //setalarm
     private void SetAlarm(){
-        dataExpert.setAlarm(alarm);
+        dataExpert.setAlarm(alarm+1 + ":00:00");
     }
 
     //check alarm

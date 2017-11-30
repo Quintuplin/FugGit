@@ -15,14 +15,18 @@ public class DataExpert {
     private StepsHeartrate stepsHeartrate =  new StepsHeartrate();
     private ActivityCalories activityCalories = new ActivityCalories();
     private UserData userData = new UserData();
-    double stopTime = clock.endTimer();
+    private double stopTime = clock.endTimer();
 
 
     //as a data expert, DataExpert accesses data from all subclass instances, and also is responsible for passing whatever instanced data onwards as needed
 
-    //setUserData is an exception, passing set data through from the DisplayWindow where those values are generated
+    //these setters are exceptions, passing set data through from the DisplayWindow where those values are needed
     public void setUserData(int age, int weight, boolean sex){
         userData.setUserData(age, weight, sex);
+    }
+
+    public void setAlarm(String alarm){
+        this.clock.setAlarm(alarm);
     }
 
     //getters make up the "data expert' part of DataExpert
@@ -34,9 +38,6 @@ public class DataExpert {
         return this.clock.currentDate();
     }
 
-    public void setAlarm(String alarm){
-        this.clock.setAlarm(alarm);
-    }
 
     public Boolean getAlarm(){ return this.clock.getAlarm(); }
 
