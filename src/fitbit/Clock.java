@@ -15,6 +15,7 @@ class Clock {
     private double timer;
     private String time;
     private String date;
+    private String Alarm;
 
     public Clock(){
         startTimer();
@@ -50,5 +51,16 @@ class Clock {
 
     public double endTimer(){
         return timer;
+    }
+
+    public void setAlarm(String alarm){
+        Alarm = alarm;
+    }
+
+    public boolean Alarm(){
+        if(Alarm.equals(currentTime())){
+            return true;
+        }
+        return false;
     }
 }
