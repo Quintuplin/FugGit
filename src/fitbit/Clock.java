@@ -48,7 +48,6 @@ class Clock {
                 + Double.parseDouble(this.currentTime().substring(3,5)) / 60
                 + Double.parseDouble(this.currentTime().substring(6,8)) / (60 * 60);
     }
-
     public double endTimer(){
         return timer;
     }
@@ -58,9 +57,7 @@ class Clock {
     }
 
     public boolean Alarm(){
-        if(Alarm.equals(currentTime())){
-            return true;
-        }
-        return false;
+        if (Alarm.equals(currentTime())) return true;
+        else return false;
     }
 }
