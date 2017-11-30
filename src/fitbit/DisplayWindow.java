@@ -20,6 +20,9 @@ import java.util.concurrent.TimeUnit;
  * Ugly (functional) UI
  */
 
+//todo make alarm iterate by 10 minutes
+    //todo make alarm functional
+    
 class DisplayWindow implements ActionListener {
 
     //handy variables
