@@ -78,8 +78,8 @@ class DisplayWindow implements ActionListener {
 
         //buttons
         sideButton = new JButton("Menu Button");
-        frontButton = new JButton("Submenu Button");
-        editButton = new JButton("Edit Button");
+        frontButton = new JButton("Change Button");
+        editButton = new JButton("Editmode Button");
         sideButton.setMnemonic(KeyEvent.VK_LEFT);
         sideButton.addActionListener(this);
         frontButton.setMnemonic(KeyEvent.VK_RIGHT);
@@ -107,6 +107,7 @@ class DisplayWindow implements ActionListener {
         caloriesBurned.setVisible(false);
         editScreen.setVisible(false);
         editToolbar.setVisible(false);
+        frontButton.setVisible(false);
 
         //start the updates
         this.update();
@@ -124,9 +125,11 @@ class DisplayWindow implements ActionListener {
                 caloriesBurned.setVisible(false);
                 editScreen.setVisible(true);
                 editToolbar.setVisible(true);
+                frontButton.setVisible(true);
             }else{
                 time.setVisible(true);
                 steps.setVisible(true);
+                frontButton.setVisible(false);
                 editScreen.setVisible(false);
                 editToolbar.setVisible(false);
             }
