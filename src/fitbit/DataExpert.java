@@ -52,6 +52,12 @@ public class DataExpert {
         return Float.toString(this.activityCalories.getActivity());
     }
 
+    public void reset(){
+        clock.startTimer();
+        activityCalories.reset();
+        stepsHeartrate.reset();
+    }
+
     //getCalories is another special case, passing multiple instances of other subclasses onwards in order for getCalories to have the information it needs
     //the parsing responsibilities are equally able to be here rather than inside ActivityCalories.
     //However, it would make the method call extremely long, as it would have to pass a significantly larger number of fields, so the more compact solution was embraced
