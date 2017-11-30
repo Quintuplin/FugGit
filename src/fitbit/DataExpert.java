@@ -8,9 +8,9 @@ package fitbit;
  */
 
 public class DataExpert {
-    //data expert acts partially as a factory and partially as a controller
+    //data expert acts partially as a creator and partially as a controller, but primarily as an expert
 
-    //as a factory, data expert generates an instance of every subclass which will ever be needed
+    //as a creator, data expert generates an instance of every subclass which will ever be needed
     private Clock clock = new Clock();
     private StepsHeartrate stepsHeartrate =  new StepsHeartrate();
     private ActivityCalories activityCalories = new ActivityCalories();
@@ -33,6 +33,12 @@ public class DataExpert {
     public String getDate(){
         return this.clock.currentDate();
     }
+
+    public void setAlarm(String alarm){
+        this.clock.setAlarm(alarm);
+    }
+
+    public Boolean getAlarm(){ return this.clock.getAlarm(); }
 
     public String getHeartrate(){
         return Integer.toString(this.stepsHeartrate.getBPM());

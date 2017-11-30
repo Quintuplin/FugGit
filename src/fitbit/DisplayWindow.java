@@ -1,8 +1,13 @@
 package fitbit;
 
+//ugly UI
+//the ugliness and shittiness of the UI starts with this single decision
+//people should not use swing
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
+//what lets the system update on a schedule independent of current executed line
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -17,14 +22,17 @@ import java.util.concurrent.TimeUnit;
 
 class DisplayWindow implements ActionListener {
 
+    //handy variables
     private int age = 0;
     private int weight = 0;
     private boolean sex = true;
     private boolean mode = true;
     private int subscreen = 0;
+    private String alarm = "12:00:00";
+    private boolean alarmMode = false;
 
     private JPanel displayPanel;
-    private JLabel time, date, heartrate, steps, activity, caloriesBurned, editScreen, editToolbar;
+    private JLabel time, date, heartrate, steps, activity, caloriesBurned, editScreen, editToolbar, alarmPopup;
     private JButton sideButton;
     private JButton frontButton;
     private JButton editButton;
@@ -65,6 +73,7 @@ class DisplayWindow implements ActionListener {
         caloriesBurned = new JLabel("Calories Burned", SwingConstants.CENTER);
         editScreen = new JLabel("Settings Mode", SwingConstants.CENTER);
         editToolbar = new JLabel(" ", SwingConstants.CENTER);
+        alarmPopup = new JLabel("ALARM", SwingConstants.CENTER);
 
         //fonts
         time.setFont(new Font("Comic Sans MS", Font.PLAIN, 60));
@@ -75,6 +84,7 @@ class DisplayWindow implements ActionListener {
         caloriesBurned.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
         editScreen.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
         editToolbar.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
+        alarmPopup.setFont(new Font("Comic Sans MS", Font.PLAIN, 70));
 
         //buttons
         sideButton = new JButton("Menu Button");
@@ -114,6 +124,9 @@ class DisplayWindow implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent event) {
+        //end alarm
+        alarmMode = false;
+
         //change menu
         if (event.getSource() == editButton){
             if(mode){
@@ -173,11 +186,11 @@ class DisplayWindow implements ActionListener {
                 if(subscreen == 0){
                     editScreen.setText(" Settings Mode ");
                 }else if(subscreen == 1){
-                    editScreen.setText("  Enter Sex:    ");
+                    editScreen.setText("    Enter Sex:  ");
                 }else if(subscreen == 2){
                     editScreen.setText("  Enter Weight: ");
                 }else if(subscreen == 3){
-                    editScreen.setText("  Enter Age:    ");
+                    editScreen.setText("    Enter Age:  ");
                 }
             } else if (event.getSource() == frontButton){
                 System.out.println(subscreen);
@@ -207,6 +220,9 @@ class DisplayWindow implements ActionListener {
         updootSettings();
         updootData();
         updootTime();
+//        if(checkAlarm()){
+//
+//        }
     }
 
     //updoot time
@@ -238,6 +254,16 @@ class DisplayWindow implements ActionListener {
         dataExpert.setUserData(age+5, weight+100, sex);
     }
 
+
+    //setalarm
+    private void SetAlarm(){
+        dataExpert.setAlarm(alarm);
+    }
+
+    //check alarm
+    private boolean checkAlarm(){
+        return dataExpert.getAlarm();
+    }
 
     //create and display window
     private static void showGUI() {
