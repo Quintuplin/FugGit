@@ -20,9 +20,10 @@ class DisplayWindow implements ActionListener {
     private int age;
     private int weight;
     private boolean sex;
+    private boolean mode = true;
 
     private JPanel displayPanel;
-    private JLabel time, date, heartrate, steps, activity, caloriesBurned;
+    private JLabel time, date, heartrate, steps, activity, caloriesBurned, editScreen, editToolbar;
     private JButton sideButton;
     private JButton frontButton;
     private JButton editButton;
@@ -61,6 +62,8 @@ class DisplayWindow implements ActionListener {
         steps = new JLabel("Steps", SwingConstants.CENTER);
         activity = new JLabel("Activity", SwingConstants.CENTER);
         caloriesBurned = new JLabel("Calories Burned", SwingConstants.CENTER);
+        editScreen = new JLabel("Input Settings", SwingConstants.CENTER);
+        editToolbar = new JLabel(" ", SwingConstants.CENTER);
 
         //fonts
         time.setFont(new Font("Comic Sans MS", Font.PLAIN, 60));
@@ -69,6 +72,8 @@ class DisplayWindow implements ActionListener {
         steps.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
         activity.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
         caloriesBurned.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
+        editScreen.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
+        editToolbar.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
 
         //buttons
         sideButton = new JButton("Side Button (left arrow)");
@@ -91,12 +96,16 @@ class DisplayWindow implements ActionListener {
         displayPanel.add(steps);
         displayPanel.add(activity);
         displayPanel.add(caloriesBurned);
+        displayPanel.add(editScreen);
+        displayPanel.add(editToolbar);
 
         //hide the things that should be hidden
         date.setVisible(false);
         heartrate.setVisible(false);
         activity.setVisible(false);
         caloriesBurned.setVisible(false);
+        editScreen.setVisible(false);
+        editToolbar.setVisible(false);
 
         //start the updates
         this.update();
@@ -104,29 +113,51 @@ class DisplayWindow implements ActionListener {
 
     public void actionPerformed(ActionEvent event) {
         //change menu
-        if (event.getSource() == sideButton) {
-            System.out.println("SIDE BUTTON PRESSED");
-
-            if (time.isVisible()) {
-                time.setVisible(!time.isVisible());
-                steps.setVisible(!steps.isVisible());
-                date.setVisible(!date.isVisible());
-                activity.setVisible(!activity.isVisible());
-            } else if (date.isVisible()) {
-                date.setVisible(!date.isVisible());
-                activity.setVisible(!activity.isVisible());
-                heartrate.setVisible(!heartrate.isVisible());
-                caloriesBurned.setVisible(!caloriesBurned.isVisible());
-            } else if (heartrate.isVisible()) {
-                heartrate.setVisible(!heartrate.isVisible());
-                caloriesBurned.setVisible(!caloriesBurned.isVisible());
-                time.setVisible(!time.isVisible());
-                steps.setVisible(!steps.isVisible());
+        if (event.getSource() == editButton){
+            if(mode){
+                time.setVisible(false);
+                date.setVisible(false);
+                heartrate.setVisible(false);
+                steps.setVisible(false);
+                activity.setVisible(false);
+                caloriesBurned.setVisible(false);
+                editScreen.setVisible(true);
+                editToolbar.setVisible(true);
+            }else{
+                time.setVisible(true);
+                steps.setVisible(true);
+                editScreen.setVisible(false);
+                editToolbar.setVisible(false);
             }
-        } else if (event.getSource() == frontButton) {
-            System.out.println("FRONT BUTTON PRESSED");
-        } else if (event.getSource() == editButton) {
-            System.out.println("EDIT BUTTON PRESSED");
+            mode = !mode;
+        }
+        if (mode) {
+            if (event.getSource() == sideButton) {
+                System.out.println("SIDE BUTTON PRESSED");
+
+                if (time.isVisible()) {
+                    time.setVisible(!time.isVisible());
+                    steps.setVisible(!steps.isVisible());
+                    date.setVisible(!date.isVisible());
+                    activity.setVisible(!activity.isVisible());
+                } else if (date.isVisible()) {
+                    date.setVisible(!date.isVisible());
+                    activity.setVisible(!activity.isVisible());
+                    heartrate.setVisible(!heartrate.isVisible());
+                    caloriesBurned.setVisible(!caloriesBurned.isVisible());
+                } else if (heartrate.isVisible()) {
+                    heartrate.setVisible(!heartrate.isVisible());
+                    caloriesBurned.setVisible(!caloriesBurned.isVisible());
+                    time.setVisible(!time.isVisible());
+                    steps.setVisible(!steps.isVisible());
+                }
+            } else if (event.getSource() == frontButton) {
+                System.out.println("FRONT BUTTON PRESSED");
+            } else if (event.getSource() == editButton) {
+                System.out.println("EDIT BUTTON PRESSED");
+            }
+        }else if (!mode){
+
         }
     }
 
